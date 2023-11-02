@@ -1,4 +1,5 @@
 # DM Grimoire API
+![Grimoire](https://github.com/Alastair7/dm-grimoire-api/assets/70861797/6545d4f2-4d0f-4dd4-a958-1bcc276b15ba)
 
 ## DM Grimoire
 DM Grimoire is a mobile APP designed for Dungeon & Dragons (D&D) game masters. 
