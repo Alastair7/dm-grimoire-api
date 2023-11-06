@@ -1,0 +1,28 @@
+{
+  "name": "dm-grimoire-api",
+  "version": "1.0.0",
+  "description": "DM Grimoire's API REST",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alastair7/dm-grimoire-api.git"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "roleplaying",
+    "d&d",
+    "nodeJS",
+    "TS",
+    "docker"
+  ],
+  "author": "Senka & Alastair7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alastair7/dm-grimoire-api/issues"
+  },
+  "homepage": "https://github.com/Alastair7/dm-grimoire-api#readme"
+}
