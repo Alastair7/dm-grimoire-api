@@ -13,4 +13,8 @@ userRouter.get("/test", (req: Request, res: Response) => {
   // You'll get that message.
 });
 
+userRouter.get("/senka", (req: Request, res: Response) => {
+  res.send("Senka test success!");
+});
+
 export default userRouter; // Don't forget to export the module to import it later in appRouter.
