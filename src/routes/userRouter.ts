@@ -1,16 +1,11 @@
-import express, { Router, Request, Response } from "express";
+import express, { Router } from "express";
 
 const userRouter: Router = express.Router();
 
-// This is a route for specific endpoints which is not too different from what you've seen in appRouter.
-userRouter.get("/", (req: Request, res: Response) => {
-  res.send("Hello from user router!");
-});
+import { getUsers, getUser } from "../controllers/userController";
 
-// Here you can add more endpoints. For example:
-userRouter.get("/test", (req: Request, res: Response) => {
-  res.send("Test user route"); // If you start the server and go to http:localhost:3000/users/test
-  // You'll get that message.
-});
+userRouter.get("/", getUsers);
 
-export default userRouter; // Don't forget to export the module to import it later in appRouter.
+userRouter.get("/:id", getUser);
+
+export default userRouter;

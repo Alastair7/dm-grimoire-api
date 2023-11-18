@@ -1,5 +1,6 @@
 import express, { Router, Request, Response } from "express";
 import userRouter from "./userRouter"; // Import user router
+import classRouter from "./classRouter";
 
 /* Hey, I guess you are here to create a router and you don't know exactly how.
 It's quite simple, this is the "main" router that you access via http://localhost:3000
@@ -13,5 +14,6 @@ appRouter.get("/", (req: Request, res: Response) => {
 
 // Here you can add more routes, for this case the result would be: http://localhost:3000/users
 appRouter.use("/users", userRouter); // Add user router
+appRouter.use("/classes", classRouter);
 
 export default appRouter;
