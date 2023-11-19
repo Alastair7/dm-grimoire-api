@@ -14,6 +14,6 @@ appRouter.get("/", (req: Request, res: Response) => {
 
 // Here you can add more routes, for this case the result would be: http://localhost:3000/users
 appRouter.use("/users", userRouter); // Add user router
-appRouter.use("/classes", classRouter);
-
+appRouter.use("/classes", classRouter); //Add class router
+appRouter.use("/:name", classRouter); //Add specific class router
 export default appRouter;
