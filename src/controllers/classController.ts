@@ -30,7 +30,9 @@ export const getClasses = async (req: Request, res: Response) => {
 
 export const getClass = async (req: Request, res: Response) => {
   const { name } = req.params;
+  console.log(req.params);
   try {
+    console.log("Working?");
     const requestConfig: AxiosRequestConfig = {
       headers: { Accept: "application/json" },
       timeout: 30000,
@@ -51,5 +53,6 @@ export const getClass = async (req: Request, res: Response) => {
     res.status(200).send(classesData);
   } catch (error) {
     res.status(400).send(`Error: ${error}`);
+    
   }
 };
