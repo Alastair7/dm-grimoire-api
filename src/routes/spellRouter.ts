@@ -1,8 +1,13 @@
 import express, { Router } from "express";
-import spellController from "../controllers/spellController";
+import { SpellService } from "../services/spellService";
+import SpellController from "../controllers/spellController";
 
 const spellRouter: Router = express.Router();
 
+const spellService = new SpellService();
+const spellController = new SpellController(spellService);
+
 spellRouter.get("/", spellController.getSpells);
+spellRouter.get("/:index", spellController.getSpell);
 
 export default spellRouter;
