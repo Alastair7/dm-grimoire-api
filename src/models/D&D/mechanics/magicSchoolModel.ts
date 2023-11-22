@@ -1,4 +1,4 @@
 interface MagicSchool {
-  index: string;
-  name: string;
+  index?: string;
+  name?: string;
 }
