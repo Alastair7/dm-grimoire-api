@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { SpellService } from "../services/spellService";
+import { ISpellService } from "../services/Spell/iSpellService";
 
 class SpellController {
-  private spellService: SpellService;
+  private spellService: ISpellService;
 
-  constructor(spellService: SpellService) {
+  constructor(spellService: ISpellService) {
     this.spellService = spellService;
   }
 
@@ -20,6 +20,7 @@ class SpellController {
   getSpell = async (req: Request, res: Response) => {
     try {
       const { index } = req.params;
+      console.log(index);
       const response = await this.spellService.getSpell(index);
 
       res.json(response);

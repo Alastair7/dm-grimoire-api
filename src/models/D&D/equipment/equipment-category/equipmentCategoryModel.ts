@@ -1,4 +1,4 @@
-interface MagicSchool {
+interface EquipmentCategory {
   index?: string;
   name?: string;
 }

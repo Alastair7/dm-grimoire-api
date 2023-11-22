@@ -1,5 +1,5 @@
-interface damageTypes {
-  index: string;
-  name: string;
-  url: string;
+interface DamageType {
+  index?: string;
+  name?: string;
+  url?: string;
 }
