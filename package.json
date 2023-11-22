@@ -5,6 +5,7 @@
   "main": "src/app.ts",
   "scripts": {
     "start": "ts-node src/app.ts",
+    "nodemon": "nodemon src/app.ts",
     "build": "tsc",
     "serve": "node dist/app.js",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts",
@@ -37,7 +38,9 @@
     "@typescript-eslint/parser": "^6.10.0",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
+    "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
   },
