@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, response } from "express";
 import { IEquipmentService } from "../services/Equipment/iEquipmentService";
 
 export class EquipmentController {
@@ -12,6 +12,16 @@ export class EquipmentController {
     try {
       const response = await this.equipmentService.getAllEquipment();
 
+      res.status(200).json(response);
+    } catch (error) {
+      res.status(400).send(error);
+    }
+  };
+
+  getEquipment = async (req: Request, res: Response) => {
+    try {
+      const { index } = req.params;
+      const response = await this.equipmentService.getEquipment(index);
       res.status(200).json(response);
     } catch (error) {
       res.status(400).send(error);

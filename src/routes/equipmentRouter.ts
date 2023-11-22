@@ -9,5 +9,6 @@ const equipmentService: IEquipmentService = new EquipmentService();
 const equipmentController = new EquipmentController(equipmentService);
 
 equipmentRouter.get("/", equipmentController.getAllEquipment);
+equipmentRouter.get("/:index", equipmentController.getEquipment);
 
 export default equipmentRouter;

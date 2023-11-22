@@ -1,5 +1,5 @@
 interface DamageType {
-  index: string;
-  name: string;
-  url: string;
+  index?: string;
+  name?: string;
+  url?: string;
 }
