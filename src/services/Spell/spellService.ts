@@ -1,8 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { GetSpellsResponseModel } from "../models/D&D/spells/getSpellsResponseModel";
-import { GetSpellResponseModel } from "../models/D&D/spells/getSpellResponseModel";
+import { GetSpellsResponseModel } from "../../models/D&D/spells/getSpellsResponseModel";
+import { GetSpellResponseModel } from "../../models/D&D/spells/getSpellResponseModel";
+import { ISpellService } from "./iSpellService";
 
-export class SpellService {
+export class SpellService implements ISpellService {
   async getSpells(): Promise<GetSpellsResponseModel> {
     try {
       const requestConfig: AxiosRequestConfig = {
@@ -35,8 +36,6 @@ export class SpellService {
         headers: { Accept: "application/json" },
         timeout: 30000,
       };
-
-      console.log("SpellService:", index);
 
       const response: AxiosResponse<GetSpellResponseModel> = await axios.get(
         `https://www.dnd5eapi.co/api/spells/${index}`,

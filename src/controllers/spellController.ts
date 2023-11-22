@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { SpellService } from "../services/spellService";
+import { ISpellService } from "../services/Spell/iSpellService";
 
 class SpellController {
-  private spellService: SpellService;
+  private spellService: ISpellService;
 
-  constructor(spellService: SpellService) {
+  constructor(spellService: ISpellService) {
     this.spellService = spellService;
   }
 
