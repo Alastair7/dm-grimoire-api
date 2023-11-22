@@ -56,10 +56,34 @@ export class SpellService {
         casting_time: response.data.casting_time,
         level: response.data.level,
         attack_type: response.data.attack_type,
-        damage: response.data.damage,
-        school: response.data.school,
-        classes: response.data.classes,
-        subclasses: response.data.subclasses,
+        damage: {
+          damage_type: {
+            index: response.data.damage.damage_type.index,
+            name: response.data.damage.damage_type.name,
+          },
+          damage_at_slot_level: {
+            2: response.data.damage.damage_at_slot_level[2],
+            3: response.data.damage.damage_at_slot_level[3],
+            4: response.data.damage.damage_at_slot_level[4],
+            5: response.data.damage.damage_at_slot_level[5],
+            6: response.data.damage.damage_at_slot_level[6],
+            7: response.data.damage.damage_at_slot_level[7],
+            8: response.data.damage.damage_at_slot_level[8],
+            9: response.data.damage.damage_at_slot_level[9],
+          },
+        },
+        school: {
+          index: response.data.school.index,
+          name: response.data.school.name,
+        },
+        classes: response.data.classes.map((classInfo) => ({
+          index: classInfo.index,
+          name: classInfo.name,
+        })),
+        subclasses: response.data.subclasses.map((subClassInfo) => ({
+          index: subClassInfo.index,
+          name: subClassInfo.name,
+        })),
       };
 
       return Promise.resolve(spellData);

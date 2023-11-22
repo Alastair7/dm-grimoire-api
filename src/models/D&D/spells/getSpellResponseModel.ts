@@ -15,8 +15,8 @@ export interface GetSpellResponseModel {
   attack_type: string;
   damage: Damage;
   school: MagicSchool;
-  classes: Class;
-  subclasses: SubClass;
+  classes: Class[];
+  subclasses: SubClass[];
 }
 
 interface AreaOfEffect {
