@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { SpellService } from "../services/spellService";
+import { SpellService } from "../services/Spell/spellService";
 
 class SpellController {
   private spellService: SpellService;

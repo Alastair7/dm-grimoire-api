@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { SpellService } from "../services/spellService";
+import { SpellService } from "../services/Spell/spellService";
 import SpellController from "../controllers/spellController";
 
 const spellRouter: Router = express.Router();

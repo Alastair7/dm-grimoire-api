@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { GetSpellsResponseModel } from "../models/D&D/spells/getSpellsResponseModel";
-import { GetSpellResponseModel } from "../models/D&D/spells/getSpellResponseModel";
+import { GetSpellsResponseModel } from "../../models/D&D/spells/getSpellsResponseModel";
+import { GetSpellResponseModel } from "../../models/D&D/spells/getSpellResponseModel";
 
 export class SpellService {
   async getSpells(): Promise<GetSpellsResponseModel> {
