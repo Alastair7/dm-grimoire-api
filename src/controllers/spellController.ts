@@ -20,6 +20,7 @@ class SpellController {
   getSpell = async (req: Request, res: Response) => {
     try {
       const { index } = req.params;
+      console.log(index);
       const response = await this.spellService.getSpell(index);
 
       res.json(response);
