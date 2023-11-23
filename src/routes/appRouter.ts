@@ -4,6 +4,7 @@ import classRouter from "./classRouter";
 import spellRouter from "./spellRouter";
 import damageTypeRouter from "./damageTypeRouter";
 import equipmentRouter from "./equipmentRouter";
+import skillRouter from "./skillRouter";
 
 /* Hey, I guess you are here to create a router and you don't know exactly how.
 It's quite simple, this is the "main" router that you access via http://localhost:3000
@@ -22,5 +23,6 @@ appRouter.use("/spells", spellRouter);
 appRouter.use("/damage-types", damageTypeRouter);
 appRouter.use("/equipment", equipmentRouter);
 appRouter.use("/proficiencies", equipmentRouter);
+appRouter.use("/skills", skillRouter);
 
 export default appRouter;
