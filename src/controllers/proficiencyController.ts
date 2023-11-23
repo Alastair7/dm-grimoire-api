@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IProficiencyService } from "../services/Proefinciency/iProficiencyService";
+import { IProficiencyService } from "../services/Profinciency/iProficiencyService";
 
 export class ProficiencyController {
   private proficiencyService: IProficiencyService;
