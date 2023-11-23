@@ -21,5 +21,6 @@ appRouter.use("/classes", classRouter);
 appRouter.use("/spells", spellRouter);
 appRouter.use("/damage-types", damageTypeRouter);
 appRouter.use("/equipment", equipmentRouter);
+appRouter.use("/proficiencies", equipmentRouter);
 
 export default appRouter;

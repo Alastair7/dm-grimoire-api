@@ -1,4 +1,4 @@
 export interface GetAllDamageTypesResponse {
   count: number;
-  results: damageTypes[];
+  results: DamageType[];
 }

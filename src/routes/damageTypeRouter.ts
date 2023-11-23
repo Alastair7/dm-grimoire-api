@@ -1,10 +1,14 @@
 import express, { Router } from "express";
-import { getAllDamageTypes, getDamageType } from "../controllers/damageTypeController";
-
+import { DamageTypeController } from "../controllers/damageTypeController";
+import { DamageTypeService } from "../services/Damage_Type/damageTypeService";
+import { IDamageTypeService } from "../services/Damage_Type/iDamageTypeService";
 
 const damageTypeRouter: Router = express.Router();
 
-damageTypeRouter.get("/", getAllDamageTypes);
-damageTypeRouter.get("/:name", getDamageType);
+const damageTypeService: IDamageTypeService = new DamageTypeService();
+const damageTypeController = new DamageTypeController(damageTypeService);
+
+damageTypeRouter.get("/", damageTypeController.getAllDamageTypes);
+damageTypeRouter.get("/:name", damageTypeController.getDamageType);
 
 export default damageTypeRouter;
