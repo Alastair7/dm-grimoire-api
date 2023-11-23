@@ -1,4 +1,4 @@
-interface Skill {
+export interface Skill {
   index: string;
   name: string;
   desc?: string[];
@@ -6,6 +6,6 @@ interface Skill {
 }
 
 interface AbilityScore {
-  index: string;
-  name: string;
+  index?: string;
+  name?: string;
 }

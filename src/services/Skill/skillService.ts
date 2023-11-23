@@ -30,7 +30,32 @@ export class SkillService implements ISkillService {
       throw error;
     }
   }
-  getSkill(index: string): Promise<GetSkillResponse> {
-    throw new Error("Method not implemented.");
+  async getSkill(index: string): Promise<GetSkillResponse> {
+    try {
+      const requestConfig: AxiosRequestConfig = {
+        headers: { Accept: "application/json" },
+        timeout: 30000,
+      };
+
+      const response: AxiosResponse<GetSkillResponse> = await axios.get(
+        `https://www.dnd5eapi.co/api/skills/${index}`,
+        requestConfig
+      );
+
+      const skillData: GetSkillResponse = {
+        index: response.data.index,
+        name: response.data.name,
+        desc: response.data.desc,
+        ability_score: {
+          index: response.data.ability_score?.index,
+          name: response.data.ability_score?.name,
+        },
+      };
+
+      return Promise.resolve(skillData);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
 }

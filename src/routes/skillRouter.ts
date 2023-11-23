@@ -9,5 +9,6 @@ const skillService: ISkillService = new SkillService();
 const skillController: SkillController = new SkillController(skillService);
 
 skillRouter.get("/", skillController.getSkills);
+skillRouter.get("/:index", skillController.getSkill);
 
 export default skillRouter;
