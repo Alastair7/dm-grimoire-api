@@ -1,9 +1,8 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { IMagicItemService } from "./iMagicItemService";
 import { GetMagicItemsResponse } from "../../models/D&D/magic-items/getMagicItemsResponseModel";
 import { GetMagicItemResponse } from "../../models/D&D/magic-items/getMagicItemResponseModel";
 import { Rarities } from "../../models/D&D/magic-items/magicItemModel";
-
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 export class MagicItemService implements IMagicItemService {
   async getMagicItems(): Promise<GetMagicItemsResponse> {
     try {
@@ -16,7 +15,6 @@ export class MagicItemService implements IMagicItemService {
         "https://www.dnd5eapi.co/api/magic-items",
         requestConfig
       );
-
       const magicItemsData: GetMagicItemsResponse = {
         count: response.data.count,
         results: response.data.results.map((magicItemInfo) => ({

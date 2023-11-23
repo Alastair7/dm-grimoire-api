@@ -8,20 +8,19 @@ export class MagicItemController {
     this.magicItemService = magicItemService;
   }
 
-  getMagicItems = (req: Request, res: Response) => {
+  getMagicItems = async (req: Request, res: Response) => {
     try {
-      const response = this.magicItemService.getMagicItems();
-
+      const response = await this.magicItemService.getMagicItems();
       res.status(200).send(response);
     } catch (error) {
       res.status(400).json(error);
     }
   };
 
-  getMagicItem = (req: Request, res: Response) => {
+  getMagicItem = async (req: Request, res: Response) => {
     try {
       const { index } = req.params;
-      const response = this.magicItemService.getMagicItem(index);
+      const response = await this.magicItemService.getMagicItem(index);
 
       res.status(200).json(response);
     } catch (error) {
