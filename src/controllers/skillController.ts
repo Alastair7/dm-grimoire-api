@@ -11,9 +11,9 @@ export class SkillController {
   getSkills = async (req: Request, res: Response) => {
     try {
       const response = await this.skillService.getSkills();
-      res.status(200).send(response);
+      res.status(200).json(response);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).json(error);
     }
   };
 
