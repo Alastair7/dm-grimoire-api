@@ -7,11 +7,13 @@ import equipmentRouter from "./equipmentRouter";
 import skillRouter from "./skillRouter";
 import magicItemRouter from "./magicItemRouter";
 import alignmentRouter from "./alignmentRouter";
+import abilityScoresRouter from "./abilityScoresRouter";
 
 /* Hey, I guess you are here to create a router and you don't know exactly how.
 It's quite simple, this is the "main" router that you access via http://localhost:3000
 */
 const appRouter: Router = express.Router();
+
 
 // This is the default route so when you access for the first time you'll see that welcome message.
 appRouter.get("/", (req: Request, res: Response) => {
@@ -28,5 +30,6 @@ appRouter.use("/proficiencies", equipmentRouter);
 appRouter.use("/skills", skillRouter);
 appRouter.use("/magic-items", magicItemRouter);
 appRouter.use("/alignments", alignmentRouter);
+appRouter.use("/ability-scores", abilityScoresRouter);
 
 export default appRouter;
