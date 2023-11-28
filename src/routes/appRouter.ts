@@ -6,6 +6,7 @@ import damageTypeRouter from "./damageTypeRouter";
 import equipmentRouter from "./equipmentRouter";
 import skillRouter from "./skillRouter";
 import magicItemRouter from "./magicItemRouter";
+import alignmentRouter from "./alignmentRouter";
 
 /* Hey, I guess you are here to create a router and you don't know exactly how.
 It's quite simple, this is the "main" router that you access via http://localhost:3000
@@ -26,5 +27,6 @@ appRouter.use("/equipment", equipmentRouter);
 appRouter.use("/proficiencies", equipmentRouter);
 appRouter.use("/skills", skillRouter);
 appRouter.use("/magic-items", magicItemRouter);
+appRouter.use("/alignments", alignmentRouter);
 
 export default appRouter;
