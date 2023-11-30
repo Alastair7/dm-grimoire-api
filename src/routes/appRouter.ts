@@ -8,6 +8,7 @@ import skillRouter from "./skillRouter";
 import magicItemRouter from "./magicItemRouter";
 import alignmentRouter from "./alignmentRouter";
 import abilityScoresRouter from "./abilityScoresRouter";
+import featureRouter from "./featureRouter";
 
 /* Hey, I guess you are here to create a router and you don't know exactly how.
 It's quite simple, this is the "main" router that you access via http://localhost:3000
@@ -31,5 +32,6 @@ appRouter.use("/skills", skillRouter);
 appRouter.use("/magic-items", magicItemRouter);
 appRouter.use("/alignments", alignmentRouter);
 appRouter.use("/ability-scores", abilityScoresRouter);
+appRouter.use("/features", featureRouter);
 
 export default appRouter;
