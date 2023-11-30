@@ -1,4 +1,4 @@
-interface GetMonstersResponse {
+export interface GetMonstersResponse {
   count: number;
   results: MonstersResult[];
 }
