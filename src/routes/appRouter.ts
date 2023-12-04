@@ -10,6 +10,7 @@ import alignmentRouter from "./alignmentRouter";
 import monsterRouter from "./monsterRouter";
 import abilityScoresRouter from "./abilityScoresRouter";
 import featureRouter from "./featureRouter";
+import raceRouter from "./raceRouter";
 
 /* Hey, I guess you are here to create a router and you don't know exactly how.
 It's quite simple, this is the "main" router that you access via http://localhost:3000
@@ -34,5 +35,6 @@ appRouter.use("/alignments", alignmentRouter);
 appRouter.use("/monsters", monsterRouter);
 appRouter.use("/ability-scores", abilityScoresRouter);
 appRouter.use("/features", featureRouter);
+appRouter.use("/races", raceRouter);
 
 export default appRouter;
