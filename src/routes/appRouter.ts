@@ -7,6 +7,7 @@ import equipmentRouter from "./equipmentRouter";
 import skillRouter from "./skillRouter";
 import magicItemRouter from "./magicItemRouter";
 import alignmentRouter from "./alignmentRouter";
+import monsterRouter from "./monsterRouter";
 import abilityScoresRouter from "./abilityScoresRouter";
 import featureRouter from "./featureRouter";
 
@@ -14,7 +15,6 @@ import featureRouter from "./featureRouter";
 It's quite simple, this is the "main" router that you access via http://localhost:3000
 */
 const appRouter: Router = express.Router();
-
 
 // This is the default route so when you access for the first time you'll see that welcome message.
 appRouter.get("/", (req: Request, res: Response) => {
@@ -31,6 +31,7 @@ appRouter.use("/proficiencies", equipmentRouter);
 appRouter.use("/skills", skillRouter);
 appRouter.use("/magic-items", magicItemRouter);
 appRouter.use("/alignments", alignmentRouter);
+appRouter.use("/monsters", monsterRouter);
 appRouter.use("/ability-scores", abilityScoresRouter);
 appRouter.use("/features", featureRouter);
 
