@@ -16,13 +16,7 @@ export class SpellService implements ISpellService {
         requestConfig
       );
 
-      const spellsData: GetSpellsResponseModel = {
-        count: response.data.count,
-        results: response.data.results.map((spellInfo) => ({
-          index: spellInfo.index,
-          name: spellInfo.name,
-        })),
-      };
+      const spellsData: GetSpellsResponseModel = response.data;
 
       return Promise.resolve(spellsData);
     } catch (error) {

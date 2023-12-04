@@ -1,35 +1,21 @@
 import { Spell } from "../spells/spellModel";
 
-interface ArmorClassBase {
+export interface ArmorClass {
   type: "dex" | "natural" | "armor" | "spell" | "condition";
   value: number;
   desc: string;
-}
-
-interface ArmorClassDex extends ArmorClassBase {}
-interface ArmorClassNatural extends ArmorClassBase {}
-interface ArmorClassArmor extends ArmorClassBase {
-  armor: Armor;
-}
-interface ArmorClassSpell extends ArmorClassBase {
-  spell: Spell;
-}
-interface ArmorClassCondition extends ArmorClassBase {
-  condition: Condition;
+  armor?: Armor[];
+  spell?: Spell;
+  condition?: Condition;
 }
 
 interface Armor {
   index: string;
   name: string;
+  url: string;
 }
 interface Condition {
   index: string;
   name: string;
+  url: string;
 }
-
-export type ArmorClass =
-  | ArmorClassDex
-  | ArmorClassNatural
-  | ArmorClassArmor
-  | ArmorClassSpell
-  | ArmorClassCondition;

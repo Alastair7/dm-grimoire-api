@@ -1,5 +1,6 @@
-import { Spell } from "../spells/spellModel";
-import { Choice, DC, Damage } from "./actionsModel";
+import { Choice } from "../common/choiceModel";
+import { Damage } from "../common/damageModel";
+import { DC } from "../common/dcModel";
 import { ArmorClass } from "./armorClassModel";
 
 export interface Monster {
@@ -134,6 +135,7 @@ interface SpellCasting {
 interface Ability {
   index: string;
   name: string;
+  url: string;
 }
 
 interface Slot {
