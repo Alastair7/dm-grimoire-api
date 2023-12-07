@@ -3,5 +3,5 @@ import { GetEquipmentCategoryResponse } from "../../models/D&D/equipment-categor
 
 export interface IEquipmentCategoriesService {
   getEquipmentCategories(): Promise<GetEquipmentCategoriesResponse>;
-  getEquipmentCategory(index: number): Promise<GetEquipmentCategoryResponse>;
+  getEquipmentCategory(index: string): Promise<GetEquipmentCategoryResponse>;
 }

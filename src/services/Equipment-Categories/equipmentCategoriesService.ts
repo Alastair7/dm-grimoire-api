@@ -27,7 +27,7 @@ export class EquipmentCategoriesService implements IEquipmentCategoriesService {
     }
   }
   async getEquipmentCategory(
-    index: number
+    index: string
   ): Promise<GetEquipmentCategoryResponse> {
     try {
       const requestConfig: AxiosRequestConfig = {
@@ -37,7 +37,7 @@ export class EquipmentCategoriesService implements IEquipmentCategoriesService {
 
       const response: AxiosResponse<GetEquipmentCategoryResponse> =
         await axios.get(
-          `https://www.dnd5eapi.co/api/equipment-category/${index}`,
+          `https://www.dnd5eapi.co/api/equipment-categories/${index}`,
           requestConfig
         );
 

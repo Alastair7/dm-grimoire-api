@@ -15,6 +15,7 @@ import backgroundRouter from "./backgroundRouter";
 import subraceRouter from "./subraceRouter";
 import conditionRouter from "./conditionRouter";
 import equipmentCategoriesRouter from "./equipmentCategoriesRouter";
+import traitRouter from "./traitRouter";
 
 /* Hey, I guess you are here to create a router and you don't know exactly how.
 It's quite simple, this is the "main" router that you access via http://localhost:3000
@@ -44,5 +45,6 @@ appRouter.use("/backgrounds", backgroundRouter);
 appRouter.use("/subraces", subraceRouter);
 appRouter.use("/conditions", conditionRouter);
 appRouter.use("/equipment-categories", equipmentCategoriesRouter);
+appRouter.use("/traits", traitRouter);
 
 export default appRouter;

@@ -21,8 +21,9 @@ export class EquipmentCategoriesController {
 
   getEquipmentCategory = async (req: Request, res: Response) => {
     try {
+      const { index } = req.params;
       const response =
-        await this.equipmentCategoriesService.getEquipmentCategories();
+        await this.equipmentCategoriesService.getEquipmentCategory(index);
 
       res.status(200).json(response);
     } catch (error) {
