@@ -1,3 +1,4 @@
+import { Rarities } from "../../../common/enums/rarities";
 import { BaseModel } from "../common/baseModel";
 import { EquipmentCategory } from "../equipment-category/equipmentCategoryModel";
 
@@ -7,16 +8,6 @@ export interface MagicItem extends BaseModel {
   rarity?: Rarities;
   variants?: Variant[];
   variant?: boolean;
-}
-
-export enum Rarities {
-  Varies = "Varies",
-  Common = "Common",
-  Uncommon = "Uncommon",
-  Rare = "Rare",
-  VeryRare = "Very Rare",
-  Legendary = "Legendary",
-  Artifact = "Artifact",
 }
 
 interface Variant {
