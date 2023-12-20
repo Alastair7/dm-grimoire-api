@@ -1,6 +1,5 @@
-export interface Condition {
-  index: string;
-  name: string;
-  url: string;
+import { BaseModel } from "../common/baseModel";
+
+export interface Condition extends BaseModel {
   desc: string[];
 }

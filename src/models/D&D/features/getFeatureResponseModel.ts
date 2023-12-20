@@ -1,14 +1,9 @@
-export interface GetFeatureResponseModel{
-  index: string;
+import { BaseModel } from "../common/baseModel";
+
+export interface GetFeatureResponseModel extends BaseModel {
   class: ClassInfo;
-  name: string;
   level: number;
   prerequisites: any[];
   desc: string[];
-  url: string;
 }
-export interface ClassInfo {
-  index: string;
-  name: string;
-  url: string;
-}
+export interface ClassInfo extends BaseModel {}

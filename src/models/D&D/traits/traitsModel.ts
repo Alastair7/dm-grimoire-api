@@ -1,12 +1,11 @@
+import { BaseModel } from "../common/baseModel";
 import { Choice } from "../common/choiceModel";
 import { Damage } from "../common/damageModel";
 import { DC } from "../common/dcModel";
 import { OptionSet } from "../common/optionSetModel";
+import { DamageType } from "../damage_types/damageTypesModel";
 
-export interface Trait {
-  index: string;
-  name: string;
-  url: string;
+export interface Trait extends BaseModel {
   desc: string[];
   races: Races[];
   subraces: SubRaces[];
@@ -16,23 +15,11 @@ export interface Trait {
   trait_specific: TraitSpecific;
 }
 
-interface Races {
-  index: string;
-  name: string;
-  url: string;
-}
+interface Races extends BaseModel {}
 
-interface SubRaces {
-  index: string;
-  name: string;
-  url: string;
-}
+interface SubRaces extends BaseModel {}
 
-interface Proficiencies {
-  index: string;
-  name: string;
-  url: string;
-}
+interface Proficiencies extends BaseModel {}
 
 interface TraitSpecific {
   desc?: string;

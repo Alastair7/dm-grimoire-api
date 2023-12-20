@@ -1,6 +1,6 @@
-export interface Skill {
-  index: string;
-  name: string;
+import { BaseModel } from "../common/baseModel";
+
+export interface Skill extends BaseModel {
   desc?: string[];
   ability_score?: AbilityScore;
 }

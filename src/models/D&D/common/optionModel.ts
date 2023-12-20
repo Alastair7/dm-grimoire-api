@@ -1,5 +1,7 @@
 import { AbilityScore } from "../ability_scores/abilityScoreModel";
 import { Alignment } from "../alignments/alignmentModel";
+import { DamageType } from "../damage_types/damageTypesModel";
+import { BaseModel } from "./baseModel";
 import { Choice } from "./choiceModel";
 import { Damage } from "./damageModel";
 import { DC } from "./dcModel";
@@ -27,13 +29,5 @@ export interface Option {
   notes?: string;
 }
 
-interface ItemOption {
-  index: string;
-  name: string;
-  url: string;
-}
-interface OfOption {
-  index: string;
-  name: string;
-  url: string;
-}
+interface ItemOption extends BaseModel {}
+interface OfOption extends BaseModel {}

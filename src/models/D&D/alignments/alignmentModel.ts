@@ -1,7 +1,6 @@
-export interface Alignment {
-  index: string;
-  name: string;
-  url: string;
+import { BaseModel } from "../common/baseModel";
+
+export interface Alignment extends BaseModel {
   abbreviation: string;
   desc: string;
 }

@@ -1,6 +1,8 @@
-export interface GetSpellResponseModel {
-  index: string;
-  name: string;
+import { Class } from "../classes/classModel";
+import { BaseModel } from "../common/baseModel";
+import { SubClass } from "../subclasses/subClassModel";
+
+export interface GetSpellResponseModel extends BaseModel {
   desc?: string[];
   higher_level?: string[];
   range?: string;

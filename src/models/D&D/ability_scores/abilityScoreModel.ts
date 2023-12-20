@@ -1,14 +1,9 @@
-export interface AbilityScore {
-  index: string;
-  name: string;
+import { BaseModel } from "../common/baseModel";
+
+export interface AbilityScore extends BaseModel {
   full_name?: string;
   desc?: string[];
   skills?: AbilityScoreSkill[];
-  url?: string;
 }
 
-export interface AbilityScoreSkill {
-  name: string;
-  index: string;
-  url: string;
-}
+export interface AbilityScoreSkill extends BaseModel {}

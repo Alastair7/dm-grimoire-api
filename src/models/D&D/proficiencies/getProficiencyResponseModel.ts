@@ -1,5 +1,5 @@
-export interface GetProficiencyResponse {
-  index: string;
-  name: string;
+import { BaseModel } from "../common/baseModel";
+
+export interface GetProficiencyResponse extends BaseModel {
   type: string;
 }

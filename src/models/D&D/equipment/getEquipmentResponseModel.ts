@@ -1,7 +1,9 @@
-export interface GetEquipmentResponse {
+import { BaseModel } from "../common/baseModel";
+import { DamageType } from "../damage_types/damageTypesModel";
+import { EquipmentCategory } from "../equipment-category/equipmentCategoryModel";
+
+export interface GetEquipmentResponse extends BaseModel {
   desc?: string[] | null[];
-  index: string;
-  name: string;
   equipment_category?: EquipmentCategory;
   weapon_category?: string;
   weapon_range?: string;

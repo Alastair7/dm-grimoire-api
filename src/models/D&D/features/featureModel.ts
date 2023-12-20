@@ -1,5 +1,3 @@
-export interface Feature {
-  index: string;
-  name: string;
-  url: string;
-}
+import { BaseModel } from "../common/baseModel";
+
+export interface Feature extends BaseModel {}

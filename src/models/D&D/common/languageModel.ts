@@ -1,5 +1,3 @@
-export interface Language {
-  index: string;
-  name: string;
-  url: string;
-}
+import { BaseModel } from "./baseModel";
+
+export interface Language extends BaseModel {}
