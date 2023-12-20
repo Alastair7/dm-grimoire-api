@@ -1,3 +1,4 @@
+import { BaseModel } from "../common/baseModel";
 import { Spell } from "../spells/spellModel";
 
 export interface ArmorClass {
@@ -9,13 +10,5 @@ export interface ArmorClass {
   condition?: Condition;
 }
 
-interface Armor {
-  index: string;
-  name: string;
-  url: string;
-}
-interface Condition {
-  index: string;
-  name: string;
-  url: string;
-}
+interface Armor extends BaseModel {}
+interface Condition extends BaseModel {}

@@ -1,5 +1,5 @@
-export interface GetSingleClassResponse {
+import { BaseModel } from "../common/baseModel";
+
+export interface GetSingleClassResponse extends BaseModel {
   hit_die: any;
-  name: any;
-  index: any;
 }

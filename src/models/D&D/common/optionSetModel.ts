@@ -1,3 +1,4 @@
+import { EquipmentCategory } from "../equipment-category/equipmentCategoryModel";
 import { Option } from "./optionModel";
 
 export interface OptionSet {

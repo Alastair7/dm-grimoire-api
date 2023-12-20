@@ -1,6 +1,6 @@
-export interface Background {
-  index: string;
-  name: string;
+import { BaseModel } from "../common/baseModel";
+
+export interface Background extends BaseModel {
   starting_proficiencies?: Proficiency[];
   language_options?: LanguageOptions;
   starting_equipment?: EquipmentItem[];
@@ -10,14 +10,9 @@ export interface Background {
   ideals?: IdealOptions;
   bonds?: OptionsArray;
   flaws?: OptionsArray;
-  url: string;
 }
 
-interface Proficiency {
-  index?: string;
-  name?: string;
-  url?: string;
-}
+interface Proficiency extends BaseModel {}
 
 interface LanguageOptions {
   choose: number;
@@ -35,11 +30,7 @@ interface EquipmentItem {
   quantity: number;
 }
 
-interface Equipment {
-  index: string;
-  name: string;
-  url: string;
-}
+interface Equipment extends BaseModel {}
 
 interface EquipmentOptions {
   choose: number;
@@ -90,8 +81,4 @@ interface Ideal {
   alignments: Alignment[];
 }
 
-interface Alignment {
-  index: string;
-  name: string;
-  url: string;
-}
+interface Alignment extends BaseModel {}

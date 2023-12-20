@@ -1,5 +1,3 @@
-export interface GetDamageTypeResponse {
-  index: string;
-  name: string;
-  desc: string;
-}
+import { DamageType } from "./damageTypesModel";
+
+export interface GetDamageTypeResponse extends DamageType {}

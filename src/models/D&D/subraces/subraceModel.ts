@@ -1,11 +1,9 @@
 import { AbilityScore } from "../ability_scores/abilityScoreModel";
+import { BaseModel } from "../common/baseModel";
 import { Choice } from "../common/choiceModel";
 import { Language } from "../common/languageModel";
 
-export interface Subrace {
-  index: string;
-  name: string;
-  url: string;
+export interface Subrace extends BaseModel {
   race: ParentRace;
   ability_bonuses: AbilityBonuses[];
   starting_proficiencies: Proficiency;
@@ -14,19 +12,11 @@ export interface Subrace {
   racial_traits: RacialTraits[];
 }
 
-interface ParentRace {
-  index: string;
-  name: string;
-  url: string;
-}
+interface ParentRace extends BaseModel {}
 
 interface AbilityBonuses {
   bonus: number;
   ability_score: AbilityScore;
 }
 
-interface RacialTraits {
-  index: string;
-  name: string;
-  url: string;
-}
+interface RacialTraits extends BaseModel {}

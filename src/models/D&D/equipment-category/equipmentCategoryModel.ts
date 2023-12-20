@@ -1,6 +1,6 @@
-export interface EquipmentCategory {
-  index: string;
-  name: string;
-  url: string;
+import { BaseModel } from "../common/baseModel";
+import { Equipment } from "../equipment/equipmentModel";
+
+export interface EquipmentCategory extends BaseModel {
   equipment: Equipment[];
 }

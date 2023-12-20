@@ -1,12 +1,10 @@
+import { BaseModel } from "../common/baseModel";
 import { Choice } from "../common/choiceModel";
 import { Damage } from "../common/damageModel";
 import { DC } from "../common/dcModel";
 import { ArmorClass } from "./armorClassModel";
 
-export interface Monster {
-  index: string;
-  name: string;
-  url: string;
+export interface Monster extends BaseModel {
   desc: string[];
   charisma: number;
   constitution: number;
@@ -89,15 +87,9 @@ interface Attack {
   damage: Damage;
 }
 
-interface ConditionInmunities {
-  index: string;
-  name: string;
-}
+interface ConditionInmunities extends BaseModel {}
 
-interface MonsterForm {
-  index: string;
-  name: string;
-}
+interface MonsterForm extends BaseModel {}
 
 interface Proficiencies {
   value: string;
@@ -132,11 +124,7 @@ interface SpellCasting {
   spells: MonsterSpell[];
 }
 
-interface Ability {
-  index: string;
-  name: string;
-  url: string;
-}
+interface Ability extends BaseModel {}
 
 interface Slot {
   [anyKey: string]: number;

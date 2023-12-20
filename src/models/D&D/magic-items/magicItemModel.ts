@@ -1,6 +1,7 @@
-export interface MagicItem {
-  index: string;
-  name: string;
+import { BaseModel } from "../common/baseModel";
+import { EquipmentCategory } from "../equipment-category/equipmentCategoryModel";
+
+export interface MagicItem extends BaseModel {
   desc?: string[];
   equipment_category?: EquipmentCategory;
   rarity?: Rarities;

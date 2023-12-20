@@ -1,4 +1,3 @@
-interface Equipment {
-  index: string;
-  name: string;
-}
+import { BaseModel } from "../common/baseModel";
+
+export interface Equipment extends BaseModel {}
