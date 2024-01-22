@@ -1,7 +1,10 @@
+import { injectable } from "inversify";
+import "reflect-metadata";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { IDndService } from "./IDndService";
 import { ApiRequestTypes } from "../../common/enums/apiRequestTypes";
 
+@injectable()
 export class DndService implements IDndService {
   readonly baseURL;
   readonly requestConfig: AxiosRequestConfig;

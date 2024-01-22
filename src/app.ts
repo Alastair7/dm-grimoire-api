@@ -1,11 +1,22 @@
+import "reflect-metadata";
 import express from "express";
-import appRouter from "./routes/appRouter"; 
+import { InversifyExpressServer } from "inversify-express-utils";
+import container from "./inversify.config";
 
 const app = express();
 const port = 3000;
 
-app.use('/', appRouter);
+let server = new InversifyExpressServer(
+  container,
+  null,
+  { rootPath: "/api" },
+  app
+);
 
-app.listen(port, () => {
-  console.log(`Server listening in port: ${port}`)
-})
+let appConfigured = server.build();
+
+//appConfigured.use("/api", appRouter);
+
+appConfigured.listen(port, () => {
+  console.log(`Server listening at: ${port}`);
+});
