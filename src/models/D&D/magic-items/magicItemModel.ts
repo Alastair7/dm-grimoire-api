@@ -14,3 +14,4 @@ interface Variant {
   index?: string;
   name?: string;
 }
+export { Rarities };

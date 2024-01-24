@@ -1,5 +1,5 @@
 export interface BaseModel {
-  index: string;
-  name: string;
+  index?: string;
+  name?: string;
   url?: string;
 }

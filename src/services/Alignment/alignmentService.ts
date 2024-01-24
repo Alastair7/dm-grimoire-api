@@ -1,46 +1,33 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { GetAlignmentResponse } from "../../models/D&D/alignments/getAlignmentResponseModel";
-import { IAlignmentService } from "./iAlignmentService";
 import { GetAllAlignmentsResponse } from "../../models/D&D/alignments/getAllAlignmentsResponseModel";
+import { inject, injectable } from "inversify";
+import { IDndService } from "../../third-party/d&d/IDndService";
+import TYPES from "../../utils/DI/types";
+import { ApiRequestTypes } from "../../common/enums/apiRequestTypes";
+import { IAlignmentService } from "./iAlignmentService";
 
+@injectable()
 export class AlignmentService implements IAlignmentService {
-  async getAllAlignments(): Promise<GetAllAlignmentsResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
-      const response: AxiosResponse<GetAllAlignmentsResponse> = await axios.get(
-        "https://www.dnd5eapi.co/api/alignments",
-        requestConfig
-      );
-      const alignmentData: GetAllAlignmentsResponse = response.data;
-      return Promise.resolve(alignmentData);
-    } catch (error) {
-      throw error;
-    }
+  private _dndService: IDndService;
+
+  constructor(@inject(TYPES.IDndService) dndService: IDndService) {
+    this._dndService = dndService;
   }
 
-  async getAlignment(name: string): Promise<any> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+  async getAllAlignments(): Promise<GetAllAlignmentsResponse> {
+    const response: GetAllAlignmentsResponse = await this._dndService.getAll(
+      ApiRequestTypes.ALIGNMENT
+    );
 
-      const response: AxiosResponse<GetAlignmentResponse> = await axios.get(
-        `https://www.dnd5eapi.co/api/alignments/${name}`,
-        requestConfig
-      );
-      const alignmentData = {
-        index: response.data.index,
-        name: response.data.name,
-        abbreviation: response.data.abbreviation,
-        desc: response.data.desc,
-      };
-      return Promise.resolve(alignmentData);
-    } catch (error) {
-      throw error;
-    }
+    return response;
+  }
+
+  async getAlignment(index: string): Promise<GetAlignmentResponse> {
+    const response: GetAlignmentResponse = await this._dndService.get(
+      index,
+      ApiRequestTypes.ALIGNMENT
+    );
+
+    return response;
   }
 }
