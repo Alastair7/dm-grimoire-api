@@ -1,29 +1,48 @@
+import "reflect-metadata";
+
 import { Request, Response } from "express";
 import { IAlignmentService } from "../services/Alignment/iAlignmentService";
+import {
+  controller,
+  httpGet,
+  interfaces,
+  request,
+  response,
+} from "inversify-express-utils";
+import { inject } from "inversify";
+import TYPES from "../utils/DI/types";
 
-export class AlignmentController{
-  private alignmentService: IAlignmentService;
+@controller("/alignments")
+export class AlignmentController implements interfaces.Controller {
+  private _alignmentService: IAlignmentService;
 
-  constructor(alignmentService: IAlignmentService){
-    this.alignmentService = alignmentService;
+  constructor(
+    @inject(TYPES.iAlignmentService) alignmentService: IAlignmentService
+  ) {
+    this._alignmentService = alignmentService;
   }
 
-  getAllAlignments = async (req: Request, res: Response) => {
-    try{
-      const response = await this.alignmentService.getAllAlignments();
+  @httpGet("/")
+  public async getAllAlignments(
+    @request() req: Request,
+    @response() res: Response
+  ) {
+    try {
+      const response = await this._alignmentService.getAllAlignments();
       res.status(200).json(response);
-    }catch(error){
-      throw error;
+    } catch (error) {
+      res.status(400).json(error);
     }
-  };
+  }
 
-  getAlignment = async (req: Request, res: Response) => {
-    try{
-      const { name } = req.params;
-      const response = await this.alignmentService.getAlignment(name);
+  @httpGet("/:index")
+  public async getAlignment(req: Request, res: Response) {
+    try {
+      const { index } = req.params;
+      const response = await this._alignmentService.getAlignment(index);
       res.status(200).json(response);
-    }catch(error){
-      throw error;
+    } catch (error) {
+      res.status(400).json(error);
     }
-  };
+  }
 }

@@ -1,4 +1,4 @@
-import { Router } from "express";
+/*import { Router } from "express";
 import { AlignmentService } from "../services/Alignment/alignmentService";
 import { IAlignmentService } from "../services/Alignment/iAlignmentService";
 import { AlignmentController } from "../controllers/alignmentController";
@@ -12,3 +12,4 @@ alignmentRouter.get("/", alignmentController.getAllAlignments);
 alignmentRouter.get("/:name", alignmentController.getAlignment);
 
 export default alignmentRouter;
+*/

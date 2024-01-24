@@ -36,7 +36,7 @@ export class AbilityScoreController implements interfaces.Controller {
     }
   }
 
-  @httpGet("/:id")
+  @httpGet("/:index")
   public async getAbilityScore(
     @request() req: Request,
     @response() res: Response

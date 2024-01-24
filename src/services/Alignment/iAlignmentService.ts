@@ -3,5 +3,5 @@ import { GetAlignmentResponse } from "../../models/D&D/alignments/getAlignmentRe
 
 export interface IAlignmentService {
   getAllAlignments(): Promise<GetAllAlignmentsResponse>;
-  getAlignment(name: string): Promise<GetAlignmentResponse>;
+  getAlignment(index: string): Promise<GetAlignmentResponse>;
 }
