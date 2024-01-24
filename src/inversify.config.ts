@@ -9,6 +9,9 @@ import { AlignmentService } from "./services/Alignment/alignmentService";
 
 import "./controllers/abilityScoreController";
 import "./controllers/alignmentController";
+import "./controllers/backgroundController";
+import { iBackgroundService } from "./services/Background/iBackgroundService";
+import { BackgroundService } from "./services/Background/backgroundService";
 
 const container = new Container();
 
@@ -18,5 +21,8 @@ container
   .to(AbilityScoreService);
 
 container.bind<IAlignmentService>(TYPES.iAlignmentService).to(AlignmentService);
+container
+  .bind<iBackgroundService>(TYPES.iBackgroundService)
+  .to(BackgroundService);
 
 export default container;
