@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { BackgroundService } from "../services/Background/backgroundService";
 import { iBackgroundService } from "../services/Background/iBackgroundService";
 import { BackgroundController } from "../controllers/backgroundController";
@@ -14,3 +14,4 @@ backgroundRouter.get("/", backgroundController.getAllBackgrounds);
 backgroundRouter.get("/:index", backgroundController.getBackground);
 
 export default backgroundRouter;
+*/

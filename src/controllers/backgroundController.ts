@@ -1,27 +1,49 @@
+import "reflect-metadata";
+
 import { Request, Response } from "express";
 import { iBackgroundService } from "../services/Background/iBackgroundService";
+import {
+  controller,
+  httpGet,
+  request,
+  response,
+} from "inversify-express-utils";
+import { inject } from "inversify";
+import TYPES from "../utils/DI/types";
 
-export class BackgroundController{
-  private backgroundService: iBackgroundService;
+@controller("/backgrounds")
+export class BackgroundController {
+  private _backgroundService: iBackgroundService;
 
-  constructor (backgroundService: iBackgroundService){
-    this.backgroundService = backgroundService;
+  constructor(
+    @inject(TYPES.iBackgroundService) backgroundService: iBackgroundService
+  ) {
+    this._backgroundService = backgroundService;
   }
 
-  getAllBackgrounds = async (req: Request, res: Response) => {
-    try{
-      const response = await this.backgroundService.getAllBackgrounds();
+  @httpGet("/")
+  public async getAllBackgrounds(
+    @request() req: Request,
+    @response() res: Response
+  ) {
+    try {
+      const response = await this._backgroundService.getAllBackgrounds();
       res.status(200).send(response);
-    }catch(error){
+    } catch (error) {
       res.status(400).json(error);
     }
   }
-  getBackground = async (req: Request, res: Response) => {
-    try{
+
+  @httpGet("/:index")
+  public async getBackground(
+    @request() req: Request,
+    @response() res: Response
+  ) {
+    try {
       const { index } = req.params;
-      const response = await this.backgroundService.getBackground(index);
+      const response = await this._backgroundService.getBackground(index);
       res.status(200).json(response);
-    }catch(error){
+    } catch (error) {
       res.status(400).json(error);
     }
   }
