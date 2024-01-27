@@ -5,6 +5,7 @@ import { iBackgroundService } from "../services/Background/iBackgroundService";
 import {
   controller,
   httpGet,
+  interfaces,
   request,
   response,
 } from "inversify-express-utils";
@@ -12,7 +13,7 @@ import { inject } from "inversify";
 import TYPES from "../utils/DI/types";
 
 @controller("/backgrounds")
-export class BackgroundController {
+export class BackgroundController implements interfaces.Controller {
   private _backgroundService: iBackgroundService;
 
   constructor(

@@ -1,54 +1,46 @@
+import "reflect-metadata";
+
 import { Request, Response } from "express";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { GetClassesResponse } from "../models/D&D/classes/getClassesResponseModel";
-import { GetSingleClassResponse } from "../models/D&D/classes/getSingleClassResponseModel";
+import {
+  controller,
+  httpGet,
+  interfaces,
+  request,
+  response,
+} from "inversify-express-utils";
+import { IClassService } from "../services/Class/iClassService";
+import { inject } from "inversify";
+import TYPES from "../utils/DI/types";
 
-export const getClasses = async (req: Request, res: Response) => {
-  try {
-    const requestConfig: AxiosRequestConfig = {
-      headers: { Accept: "application/json" },
-      timeout: 30000,
-    };
+@controller("/classes")
+export class ClassController implements interfaces.Controller {
+  private _classService: IClassService;
 
-    const response: AxiosResponse<GetClassesResponse> = await axios.get(
-      "https://www.dnd5eapi.co/api/classes",
-      requestConfig
-    );
-    const classesData: GetClassesResponse = {
-      count: response.data.count,
-      results: response.data.results.map((classInfo) => ({
-        index: classInfo.index,
-        name: classInfo.name,
-      })),
-    };
-
-    res.status(200).send(classesData);
-  } catch (error) {
-    res.status(400).send(`Error: ${error}`);
+  constructor(@inject(TYPES.iClassService) classService: IClassService) {
+    this._classService = classService;
   }
-};
 
-// Get a specific single class
-export const getClass = async (req: Request, res: Response) => {
-  const { name } = req.params;
-  try {
-    const requestConfig: AxiosRequestConfig = {
-      headers: { Accept: "application/json" },
-      timeout: 30000,
-    };
-
-    const response: AxiosResponse<GetSingleClassResponse> = await axios.get(
-      `https://www.dnd5eapi.co/api/classes/${name}`,
-      requestConfig
-    );
-    const classData = {
-      index: response.data.index,
-      name: response.data.name,
-      hit_die: response.data.hit_die,
-    };
-    
-    res.status(200).send(classData);
-  } catch (error) {
-    res.status(400).send(`Error: ${error}`);
+  @httpGet("/")
+  public async getClasses(@request() req: Request, @response() res: Response) {
+    try {
+      const response = await this._classService.getClasses();
+      res.status(200).json(response);
+    } catch (error) {
+      res.status(400).json(error);
+    }
   }
-};
+
+  @httpGet("/:index")
+  public async getClass(@request() req: Request, @response() res: Response) {
+    try {
+      const { index } = req.params;
+
+      const response = await this._classService.getClass(index);
+
+      res.status(200).json(response);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  }
+}

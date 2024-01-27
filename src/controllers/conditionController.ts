@@ -1,8 +1,11 @@
+import "reflect-metadata";
+
 import { Request, Response } from "express";
 import { IConditionService } from "../services/Condition/iConditionService";
 import {
   controller,
   httpGet,
+  interfaces,
   request,
   response,
 } from "inversify-express-utils";
@@ -10,7 +13,7 @@ import TYPES from "../utils/DI/types";
 import { inject } from "inversify";
 
 @controller("/conditions")
-export class ConditionController {
+export class ConditionController implements interfaces.Controller {
   private _conditionService: IConditionService;
 
   constructor(

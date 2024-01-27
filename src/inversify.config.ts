@@ -10,11 +10,14 @@ import { iBackgroundService } from "./services/Background/iBackgroundService";
 import { BackgroundService } from "./services/Background/backgroundService";
 import { IConditionService } from "./services/Condition/iConditionService";
 import { ConditionService } from "./services/Condition/conditionService";
+import { IClassService } from "./services/Class/iClassService";
+import { ClassService } from "./services/Class/ClassService";
 
 import "./controllers/abilityScoreController";
 import "./controllers/alignmentController";
 import "./controllers/backgroundController";
 import "./controllers/conditionController";
+import "./controllers/classController";
 
 const container = new Container();
 
@@ -29,5 +32,6 @@ container
   .to(BackgroundService);
 
 container.bind<IConditionService>(TYPES.iConditionService).to(ConditionService);
+container.bind<IClassService>(TYPES.iClassService).to(ClassService);
 
 export default container;
