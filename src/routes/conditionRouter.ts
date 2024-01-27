@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { IConditionService } from "../services/Condition/iConditionService";
 import { ConditionService } from "../services/Condition/conditionService";
 import { ConditionController } from "../controllers/conditionController";
@@ -14,3 +14,4 @@ conditionRouter.get("/", conditionController.getConditions);
 conditionRouter.get("/:index", conditionController.getCondition);
 
 export default conditionRouter;
+*/

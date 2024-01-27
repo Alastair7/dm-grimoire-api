@@ -2,6 +2,7 @@ export enum ApiRequestTypes {
   ABILITY_SCORE = "ability-scores",
   ALIGNMENT = "alignments",
   BACKGROUND = "backgrounds",
+  CLASS = "classes",
   CONDITION = "conditions",
   DAMAGE_TYPE = "damage-types",
   EQUIPMENT = "equipment",

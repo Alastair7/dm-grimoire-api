@@ -1,29 +1,51 @@
-import { Request, Response, response } from "express";
+import "reflect-metadata";
+
+import { Request, Response } from "express";
 import { IConditionService } from "../services/Condition/iConditionService";
+import {
+  controller,
+  httpGet,
+  interfaces,
+  request,
+  response,
+} from "inversify-express-utils";
+import TYPES from "../utils/DI/types";
+import { inject } from "inversify";
 
-export class ConditionController {
-  private conditionService: IConditionService;
+@controller("/conditions")
+export class ConditionController implements interfaces.Controller {
+  private _conditionService: IConditionService;
 
-  constructor(conditionService: IConditionService) {
-    this.conditionService = conditionService;
+  constructor(
+    @inject(TYPES.iConditionService) conditionService: IConditionService
+  ) {
+    this._conditionService = conditionService;
   }
 
-  getConditions = async (req: Request, res: Response) => {
+  @httpGet("/")
+  public async getConditions(
+    @request() req: Request,
+    @response() res: Response
+  ) {
     try {
-      const response = await this.conditionService.getConditions();
+      const response = await this._conditionService.getConditions();
       res.status(200).json(response);
     } catch (error) {
       res.status(400).json(error);
     }
-  };
+  }
 
-  getCondition = async (req: Request, res: Response) => {
+  @httpGet("/:index")
+  public async getCondition(
+    @request() req: Request,
+    @response() res: Response
+  ) {
     try {
       const { index } = req.params;
-      const response = await this.conditionService.getCondition(index);
+      const response = await this._conditionService.getCondition(index);
       res.status(200).json(response);
     } catch (error) {
       res.status(400).json(error);
     }
-  };
+  }
 }

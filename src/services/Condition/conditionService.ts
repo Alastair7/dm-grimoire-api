@@ -1,47 +1,32 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { GetConditionsResponse } from "../../models/D&D/conditions/getConditionsResponseModel";
 import { IConditionService } from "./iConditionService";
 import { GetConditionResponse } from "../../models/D&D/conditions/getConditionResponseModel";
+import { IDndService } from "../../third-party/d&d/IDndService";
+import { inject, injectable } from "inversify";
+import TYPES from "../../utils/DI/types";
+import { ApiRequestTypes } from "../../common/enums/apiRequestTypes";
 
+@injectable()
 export class ConditionService implements IConditionService {
+  private _dndService: IDndService;
+
+  constructor(@inject(TYPES.IDndService) dndService: IDndService) {
+    this._dndService = dndService;
+  }
+
   async getConditions(): Promise<GetConditionsResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+    const response: GetConditionsResponse = await this._dndService.getAll(
+      ApiRequestTypes.CONDITION
+    );
 
-      const response: AxiosResponse<GetConditionsResponse> = await axios.get(
-        "https://www.dnd5eapi.co/api/conditions",
-        requestConfig
-      );
-
-      const conditionsData: GetConditionsResponse = response.data;
-
-      return Promise.resolve(conditionsData);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    return response;
   }
   async getCondition(index: string): Promise<GetConditionResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+    const response: GetConditionResponse = await this._dndService.get(
+      index,
+      ApiRequestTypes.CONDITION
+    );
 
-      const response: AxiosResponse<GetConditionResponse> = await axios.get(
-        `https://www.dnd5eapi.co/api/conditions/${index}`,
-        requestConfig
-      );
-
-      const conditionData: GetConditionResponse = response.data;
-
-      return Promise.resolve(conditionData);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    return response;
   }
 }

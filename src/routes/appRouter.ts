@@ -13,7 +13,7 @@ import featureRouter from "./featureRouter";
 import raceRouter from "./raceRouter";
 //import backgroundRouter from "./backgroundRouter";
 import subraceRouter from "./subraceRouter";
-import conditionRouter from "./conditionRouter";
+//import conditionRouter from "./conditionRouter";
 import equipmentCategoriesRouter from "./equipmentCategoriesRouter";
 import traitRouter from "./traitRouter";
 
@@ -43,7 +43,7 @@ appRouter.use("/features", featureRouter);
 appRouter.use("/races", raceRouter);
 //appRouter.use("/backgrounds", backgroundRouter);
 appRouter.use("/subraces", subraceRouter);
-appRouter.use("/conditions", conditionRouter);
+//appRouter.use("/conditions", conditionRouter);
 appRouter.use("/equipment-categories", equipmentCategoriesRouter);
 appRouter.use("/traits", traitRouter);
 
