@@ -3,6 +3,7 @@ const TYPES = {
   iAbilityScoreService: Symbol("iAbilityScoreService"),
   iAlignmentService: Symbol("iAlignmentService"),
   iBackgroundService: Symbol("iBackgroundService"),
+  iConditionService: Symbol("iConditionService"),
 };
 
 export default TYPES;
