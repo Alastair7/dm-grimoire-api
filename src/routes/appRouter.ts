@@ -2,7 +2,7 @@ import express, { Router, Request, Response } from "express";
 import userRouter from "./userRouter"; // Import user router
 import classRouter from "./classRouter";
 import spellRouter from "./spellRouter";
-import damageTypeRouter from "./damageTypeRouter";
+//import damageTypeRouter from "./damageTypeRouter";
 import equipmentRouter from "./equipmentRouter";
 import skillRouter from "./skillRouter";
 import magicItemRouter from "./magicItemRouter";
@@ -31,7 +31,7 @@ appRouter.get("/", (req: Request, res: Response) => {
 appRouter.use("/users", userRouter); // Add user router
 appRouter.use("/classes", classRouter);
 appRouter.use("/spells", spellRouter);
-appRouter.use("/damage-types", damageTypeRouter);
+//appRouter.use("/damage-types", damageTypeRouter);
 appRouter.use("/equipment", equipmentRouter);
 appRouter.use("/proficiencies", equipmentRouter);
 appRouter.use("/skills", skillRouter);

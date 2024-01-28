@@ -1,6 +1,7 @@
 import { Container } from "inversify";
 import { IDndService } from "./third-party/d&d/IDndService";
 import TYPES from "./utils/DI/types";
+
 import { DndService } from "./third-party/d&d/DndService";
 import { iAbilityScoreService } from "./services/Ability_Score/iAbilityScoreService";
 import { AbilityScoreService } from "./services/Ability_Score/abilityScoreService";
@@ -12,12 +13,15 @@ import { IConditionService } from "./services/Condition/iConditionService";
 import { ConditionService } from "./services/Condition/conditionService";
 import { IClassService } from "./services/Class/iClassService";
 import { ClassService } from "./services/Class/ClassService";
+import { IDamageTypeService } from "./services/Damage_Type/iDamageTypeService";
+import { DamageTypeService } from "./services/Damage_Type/damageTypeService";
 
 import "./controllers/abilityScoreController";
 import "./controllers/alignmentController";
 import "./controllers/backgroundController";
 import "./controllers/conditionController";
 import "./controllers/classController";
+import "./controllers/damageTypeController";
 
 const container = new Container();
 
@@ -33,5 +37,8 @@ container
 
 container.bind<IConditionService>(TYPES.iConditionService).to(ConditionService);
 container.bind<IClassService>(TYPES.iClassService).to(ClassService);
+container
+  .bind<IDamageTypeService>(TYPES.iDamageTypeService)
+  .to(DamageTypeService);
 
 export default container;

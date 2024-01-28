@@ -1,24 +1,42 @@
+import "reflect-metadata";
+
 import { Request, Response } from "express";
 import { IDamageTypeService } from "../services/Damage_Type/iDamageTypeService";
+import {
+  controller,
+  httpGet,
+  request,
+  response,
+} from "inversify-express-utils";
+import { inject } from "inversify";
+import TYPES from "../utils/DI/types";
 
+@controller("/damage-types")
 export class DamageTypeController {
   private damageTypeService: IDamageTypeService;
 
-  constructor(equipmentService: IDamageTypeService) {
-    this.damageTypeService = equipmentService;
+  constructor(
+    @inject(TYPES.iDamageTypeService) damageTypeService: IDamageTypeService
+  ) {
+    this.damageTypeService = damageTypeService;
   }
 
-  getAllDamageTypes = async (req: Request, res: Response) => {
+  @httpGet("/")
+  public async getAllDamageTypes(
+    @request() req: Request,
+    @response() res: Response
+  ) {
     try {
       const response = await this.damageTypeService.getAllDamageTypes();
 
       res.status(200).json(response);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).json(error);
     }
-  };
+  }
 
-  getDamageType = async (req: Request, res: Response) => {
+  @httpGet("/:index")
+  public async getDamageType(req: Request, res: Response) {
     try {
       const { index } = req.params;
       const response = await this.damageTypeService.getDamageType(index);
@@ -26,5 +44,5 @@ export class DamageTypeController {
     } catch (error) {
       res.status(400).send(error);
     }
-  };
+  }
 }

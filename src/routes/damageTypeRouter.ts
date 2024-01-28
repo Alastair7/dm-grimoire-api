@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { DamageTypeController } from "../controllers/damageTypeController";
 import { DamageTypeService } from "../services/Damage_Type/damageTypeService";
 import { IDamageTypeService } from "../services/Damage_Type/iDamageTypeService";
@@ -12,3 +12,4 @@ damageTypeRouter.get("/", damageTypeController.getAllDamageTypes);
 damageTypeRouter.get("/:name", damageTypeController.getDamageType);
 
 export default damageTypeRouter;
+*/
