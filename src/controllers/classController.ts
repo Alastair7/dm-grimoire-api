@@ -1,7 +1,6 @@
 import "reflect-metadata";
 
 import { Request, Response } from "express";
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import {
   controller,
   httpGet,

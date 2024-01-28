@@ -1,14 +1,33 @@
-import { Request, Response } from "express";
-import { IEquipmentCategoriesService } from "../services/Equipment-Categories/IEquipmentCategoriesService";
+import "reflect-metadata";
 
-export class EquipmentCategoriesController {
+import { Request, Response } from "express";
+import {
+  controller,
+  httpGet,
+  interfaces,
+  request,
+  response,
+} from "inversify-express-utils";
+import TYPES from "../utils/DI/types";
+import { inject } from "inversify";
+import { IEquipmentCategoriesService } from "../services/Equipment-Categories/iEquipmentCategoriesService";
+
+@controller("/equipment-categories")
+export class EquipmentCategoriesController implements interfaces.Controller {
   private equipmentCategoriesService: IEquipmentCategoriesService;
 
-  constructor(equipmentCategoriesService: IEquipmentCategoriesService) {
+  constructor(
+    @inject(TYPES.iEquipmentCategories)
+    equipmentCategoriesService: IEquipmentCategoriesService
+  ) {
     this.equipmentCategoriesService = equipmentCategoriesService;
   }
 
-  getEquipmentCategories = async (req: Request, res: Response) => {
+  @httpGet("/")
+  public async getEquipmentCategories(
+    @request() req: Request,
+    @response() res: Response
+  ) {
     try {
       const response =
         await this.equipmentCategoriesService.getEquipmentCategories();
@@ -17,9 +36,13 @@ export class EquipmentCategoriesController {
     } catch (error) {
       res.status(400).json(error);
     }
-  };
+  }
 
-  getEquipmentCategory = async (req: Request, res: Response) => {
+  @httpGet("/:index")
+  public async getEquipmentCategory(
+    @request() req: Request,
+    @response() res: Response
+  ) {
     try {
       const { index } = req.params;
       const response =
@@ -29,5 +52,5 @@ export class EquipmentCategoriesController {
     } catch (error) {
       res.status(400).json(error);
     }
-  };
+  }
 }
