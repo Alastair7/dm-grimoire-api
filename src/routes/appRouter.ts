@@ -1,6 +1,6 @@
 import express, { Router, Request, Response } from "express";
 import userRouter from "./userRouter"; // Import user router
-import classRouter from "./classRouter";
+//import classRouter from "./classRouter";
 import spellRouter from "./spellRouter";
 //import damageTypeRouter from "./damageTypeRouter";
 import equipmentRouter from "./equipmentRouter";
@@ -14,7 +14,7 @@ import raceRouter from "./raceRouter";
 //import backgroundRouter from "./backgroundRouter";
 import subraceRouter from "./subraceRouter";
 //import conditionRouter from "./conditionRouter";
-import equipmentCategoriesRouter from "./equipmentCategoriesRouter";
+//import equipmentCategoriesRouter from "./equipmentCategoriesRouter";
 import traitRouter from "./traitRouter";
 
 /* Hey, I guess you are here to create a router and you don't know exactly how.
@@ -29,7 +29,7 @@ appRouter.get("/", (req: Request, res: Response) => {
 
 // Here you can add more routes, for this case the result would be: http://localhost:3000/users
 appRouter.use("/users", userRouter); // Add user router
-appRouter.use("/classes", classRouter);
+//appRouter.use("/classes", classRouter);
 appRouter.use("/spells", spellRouter);
 //appRouter.use("/damage-types", damageTypeRouter);
 appRouter.use("/equipment", equipmentRouter);
@@ -44,7 +44,7 @@ appRouter.use("/races", raceRouter);
 //appRouter.use("/backgrounds", backgroundRouter);
 appRouter.use("/subraces", subraceRouter);
 //appRouter.use("/conditions", conditionRouter);
-appRouter.use("/equipment-categories", equipmentCategoriesRouter);
+//appRouter.use("/equipment-categories", equipmentCategoriesRouter);
 appRouter.use("/traits", traitRouter);
 
 export default appRouter;

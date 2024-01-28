@@ -1,52 +1,33 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { GetEquipmentCategoriesResponse } from "../../models/D&D/equipment-category/getEquipmentCategoriesResponseModel";
 import { GetEquipmentCategoryResponse } from "../../models/D&D/equipment-category/getEquipmentCategoryResponseModel";
-import { IEquipmentCategoriesService } from "./IEquipmentCategoriesService";
+import { IDndService } from "../../third-party/d&d/IDndService";
+import { inject, injectable } from "inversify";
+import TYPES from "../../utils/DI/types";
+import { ApiRequestTypes } from "../../common/enums/apiRequestTypes";
+import { IEquipmentCategoriesService } from "./iEquipmentCategoriesService";
 
+@injectable()
 export class EquipmentCategoriesService implements IEquipmentCategoriesService {
+  private _dndService: IDndService;
+
+  constructor(@inject(TYPES.IDndService) dndService: IDndService) {
+    this._dndService = dndService;
+  }
+
   async getEquipmentCategories(): Promise<GetEquipmentCategoriesResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+    const response: GetEquipmentCategoriesResponse =
+      await this._dndService.getAll(ApiRequestTypes.EQUIPMENT_CATEGORIES);
 
-      const response: AxiosResponse<GetEquipmentCategoriesResponse> =
-        await axios.get(
-          "https://www.dnd5eapi.co/api/equipment-categories",
-          requestConfig
-        );
-
-      const equipmentCategoriesData: GetEquipmentCategoriesResponse =
-        response.data;
-
-      return Promise.resolve(equipmentCategoriesData);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    return response;
   }
   async getEquipmentCategory(
     index: string
   ): Promise<GetEquipmentCategoryResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+    const response: GetEquipmentCategoryResponse = await this._dndService.get(
+      index,
+      ApiRequestTypes.EQUIPMENT_CATEGORIES
+    );
 
-      const response: AxiosResponse<GetEquipmentCategoryResponse> =
-        await axios.get(
-          `https://www.dnd5eapi.co/api/equipment-categories/${index}`,
-          requestConfig
-        );
-
-      const equipmentCategoryData = response.data;
-
-      return Promise.resolve(equipmentCategoryData);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    return response;
   }
 }

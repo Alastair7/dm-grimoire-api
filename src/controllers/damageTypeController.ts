@@ -5,6 +5,7 @@ import { IDamageTypeService } from "../services/Damage_Type/iDamageTypeService";
 import {
   controller,
   httpGet,
+  interfaces,
   request,
   response,
 } from "inversify-express-utils";
@@ -12,7 +13,7 @@ import { inject } from "inversify";
 import TYPES from "../utils/DI/types";
 
 @controller("/damage-types")
-export class DamageTypeController {
+export class DamageTypeController implements interfaces.Controller {
   private damageTypeService: IDamageTypeService;
 
   constructor(

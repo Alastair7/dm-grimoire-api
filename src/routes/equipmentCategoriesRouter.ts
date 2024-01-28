@@ -1,5 +1,5 @@
-import express, { Router } from "express";
-import { IEquipmentCategoriesService } from "../services/Equipment-Categories/IEquipmentCategoriesService";
+/*import express, { Router } from "express";
+import { IEquipmentCategoriesService } from "../services/Equipment-Categories/iEquipmentCategoriesService";
 import { EquipmentCategoriesService } from "../services/Equipment-Categories/equipmentCategoriesService";
 import { EquipmentCategoriesController } from "../controllers/equipmentCategoriesController";
 
@@ -22,3 +22,4 @@ equipmentCategoriesRouter.get(
 );
 
 export default equipmentCategoriesRouter;
+*/

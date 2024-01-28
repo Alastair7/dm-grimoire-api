@@ -15,6 +15,8 @@ import { IClassService } from "./services/Class/iClassService";
 import { ClassService } from "./services/Class/ClassService";
 import { IDamageTypeService } from "./services/Damage_Type/iDamageTypeService";
 import { DamageTypeService } from "./services/Damage_Type/damageTypeService";
+import { EquipmentCategoriesService } from "./services/Equipment-Categories/equipmentCategoriesService";
+import { IEquipmentCategoriesService } from "./services/Equipment-Categories/iEquipmentCategoriesService";
 
 import "./controllers/abilityScoreController";
 import "./controllers/alignmentController";
@@ -22,6 +24,7 @@ import "./controllers/backgroundController";
 import "./controllers/conditionController";
 import "./controllers/classController";
 import "./controllers/damageTypeController";
+import "./controllers/equipmentCategoriesController";
 
 const container = new Container();
 
@@ -37,8 +40,13 @@ container
 
 container.bind<IConditionService>(TYPES.iConditionService).to(ConditionService);
 container.bind<IClassService>(TYPES.iClassService).to(ClassService);
+
 container
   .bind<IDamageTypeService>(TYPES.iDamageTypeService)
   .to(DamageTypeService);
+
+container
+  .bind<IEquipmentCategoriesService>(TYPES.iEquipmentCategories)
+  .to(EquipmentCategoriesService);
 
 export default container;
