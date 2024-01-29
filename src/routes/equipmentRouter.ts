@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { EquipmentController } from "../controllers/equipmentController";
 import { IEquipmentService } from "../services/Equipment/iEquipmentService";
 import { EquipmentService } from "../services/Equipment/equipmentService";
@@ -12,3 +12,4 @@ equipmentRouter.get("/", equipmentController.getAllEquipment);
 equipmentRouter.get("/:index", equipmentController.getEquipment);
 
 export default equipmentRouter;
+*/

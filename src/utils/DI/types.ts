@@ -7,6 +7,7 @@ const TYPES = {
   iClassService: Symbol("iClassService"),
   iDamageTypeService: Symbol("iDamageTypeService"),
   iEquipmentCategories: Symbol("iEquipmentCategoriesService"),
+  IEquipmentService: Symbol("IEquipmentService"),
 };
 
 export default TYPES;
