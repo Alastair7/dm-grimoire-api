@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { FeatureService } from "../services/Feature/featureService";
 import { IFeatureService } from "../services/Feature/iFeatureService";
 import { FeatureController } from "../controllers/featureController";
@@ -12,3 +12,4 @@ featureRouter.get("/", featureController.getFeatures);
 featureRouter.get("/:index", featureController.getFeature);
 
 export default featureRouter;
+*/
