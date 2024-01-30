@@ -1,46 +1,32 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { GetRaceResponse } from "../../models/D&D/races/getRaceResponseModel";
 import { GetRacesResponse } from "../../models/D&D/races/getRacesResponseModel";
 import { IRaceService } from "./iRaceService";
+import { inject, injectable } from "inversify";
+import { IDndService } from "../../third-party/d&d/IDndService";
+import TYPES from "../../utils/DI/types";
+import { ApiRequestTypes } from "../../common/enums/apiRequestTypes";
 
+@injectable()
 export class RaceService implements IRaceService {
+  public _dndService: IDndService;
+
+  constructor(@inject(TYPES.IDndService) dndService: IDndService) {
+    this._dndService = dndService;
+  }
+
   async getRaces(): Promise<GetRacesResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+    const response: GetRacesResponse = await this._dndService.getAll(
+      ApiRequestTypes.RACE
+    );
 
-      const response: AxiosResponse<GetRacesResponse> = await axios.get(
-        "https://www.dnd5eapi.co/api/races",
-        requestConfig
-      );
-
-      const raceData: GetRacesResponse = response.data;
-
-      return Promise.resolve(raceData);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    return response;
   }
   async getRace(index: string): Promise<GetRaceResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+    const response: GetRaceResponse = await this._dndService.get(
+      index,
+      ApiRequestTypes.RACE
+    );
 
-      const response: AxiosResponse<GetRaceResponse> = await axios.get(
-        `https://www.dnd5eapi.co/api/races/${index}`,
-        requestConfig
-      );
-
-      const raceData: GetRaceResponse = response.data;
-      return Promise.resolve(raceData);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    return response;
   }
 }

@@ -3,5 +3,5 @@ import { GetProficiencyResponse } from "../../models/D&D/proficiencies/getProfic
 
 export interface IProficiencyService {
   getAllProficiencies(): Promise<GetAllProficienciesResponse>;
-  getProficiency(name: string): Promise<GetProficiencyResponse>;
+  getProficiency(index: string): Promise<GetProficiencyResponse>;
 }

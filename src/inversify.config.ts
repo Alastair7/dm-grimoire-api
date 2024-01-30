@@ -21,6 +21,22 @@ import { EquipmentService } from "./services/Equipment/equipmentService";
 import { IEquipmentService } from "./services/Equipment/iEquipmentService";
 import { IFeatureService } from "./services/Feature/iFeatureService";
 import { FeatureService } from "./services/Feature/featureService";
+import { IMagicItemService } from "./services/Magic_Item/iMagicItemService";
+import { MagicItemService } from "./services/Magic_Item/magicItemService";
+import { IMonsterService } from "./services/Monster/iMonsterService";
+import { MonsterService } from "./services/Monster/monsterService";
+import { IProficiencyService } from "./services/Profinciency/iProficiencyService";
+import { ProficiencyService } from "./services/Profinciency/proficiencyService";
+import { IRaceService } from "./services/Race/iRaceService";
+import { RaceService } from "./services/Race/RaceService";
+import { ISkillService } from "./services/Skill/iSkillService";
+import { SkillService } from "./services/Skill/skillService";
+import { ISpellService } from "./services/Spell/iSpellService";
+import { SpellService } from "./services/Spell/spellService";
+import { ISubraceService } from "./services/SubRace/iSubraceService";
+import { SubraceService } from "./services/SubRace/subraceService";
+import { ITraitService } from "./services/Trait/ITraitService";
+import { TraitService } from "./services/Trait/TraitService";
 
 import "./controllers/abilityScoreController";
 import "./controllers/alignmentController";
@@ -31,6 +47,14 @@ import "./controllers/damageTypeController";
 import "./controllers/equipmentCategoriesController";
 import "./controllers/equipmentController";
 import "./controllers/featureController";
+import "./controllers/magicItemController";
+import "./controllers/monsterController";
+import "./controllers/proficiencyController";
+import "./controllers/raceController";
+import "./controllers/skillController";
+import "./controllers/spellController";
+import "./controllers/subraceController";
+import "./controllers/traitController";
 
 const container = new Container();
 
@@ -56,7 +80,17 @@ container
   .to(EquipmentCategoriesService);
 
 container.bind<IEquipmentService>(TYPES.IEquipmentService).to(EquipmentService);
-
 container.bind<IFeatureService>(TYPES.iFeatureService).to(FeatureService);
+container.bind<IMagicItemService>(TYPES.iMagicItemService).to(MagicItemService);
+container.bind<IMonsterService>(TYPES.iMonsterService).to(MonsterService);
 
+container
+  .bind<IProficiencyService>(TYPES.iProficiencyService)
+  .to(ProficiencyService);
+
+container.bind<IRaceService>(TYPES.iRaceService).to(RaceService);
+container.bind<ISkillService>(TYPES.iSkillService).to(SkillService);
+container.bind<ISpellService>(TYPES.iSpellService).to(SpellService);
+container.bind<ISubraceService>(TYPES.iSubraceService).to(SubraceService);
+container.bind<ITraitService>(TYPES.iTraitService).to(TraitService);
 export default container;
