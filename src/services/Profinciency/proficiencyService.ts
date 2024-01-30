@@ -1,55 +1,33 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { GetAllProficienciesResponse } from "../../models/D&D/proficiencies/getAllProficienciesResponseModel";
 import { GetProficiencyResponse } from "../../models/D&D/proficiencies/getProficiencyResponseModel";
 import { IProficiencyService } from "./iProficiencyService";
+import { inject, injectable } from "inversify";
+import { IDndService } from "../../third-party/d&d/IDndService";
+import TYPES from "../../utils/DI/types";
+import { ApiRequestTypes } from "../../common/enums/apiRequestTypes";
 
+@injectable()
 export class ProficiencyService implements IProficiencyService {
-  async getAllProficiencies(): Promise<GetAllProficienciesResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
-      const response: AxiosResponse<GetAllProficienciesResponse> =
-        await axios.get(
-          "https://www.dnd5eapi.co/api/proficiencies",
-          requestConfig
-        );
-      const proficienciesData: GetAllProficienciesResponse = {
-        count: response.data.count,
-        results: response.data.results.map((proficienciesInfo) => ({
-          index: proficienciesInfo.index,
-          name: proficienciesInfo.name,
-          type: proficienciesInfo.type,
-        })),
-      };
+  private _dndService: IDndService;
 
-      return Promise.resolve(proficienciesData);
-    } catch (error) {
-      throw error;
-    }
+  constructor(@inject(TYPES.IDndService) dndService: IDndService) {
+    this._dndService = dndService;
   }
 
-  async getProficiency(name: string): Promise<GetProficiencyResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+  async getAllProficiencies(): Promise<GetAllProficienciesResponse> {
+    const response: GetAllProficienciesResponse = await this._dndService.getAll(
+      ApiRequestTypes.PROFICIENCY
+    );
 
-      const response: AxiosResponse<GetProficiencyResponse> = await axios.get(
-        `https://www.dnd5eapi.co/api/proficiencies/${name}`,
-        requestConfig
-      );
-      const proficiencyData = {
-        index: response.data.index,
-        name: response.data.name,
-        type: response.data.type,
-      };
+    return response;
+  }
 
-      return Promise.resolve(proficiencyData);
-    } catch (error) {
-      throw error;
-    }
+  async getProficiency(index: string): Promise<GetProficiencyResponse> {
+    const response: GetProficiencyResponse = await this._dndService.get(
+      index,
+      ApiRequestTypes.PROFICIENCY
+    );
+
+    return response;
   }
 }

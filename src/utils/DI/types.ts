@@ -11,6 +11,7 @@ const TYPES = {
   iFeatureService: Symbol("iFeatureService"),
   iMagicItemService: Symbol("iMagicItemService"),
   iMonsterService: Symbol("iMonsterService"),
+  iProficiencyService: Symbol("iProficiencyService"),
 };
 
 export default TYPES;

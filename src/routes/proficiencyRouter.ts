@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { ProficiencyController } from "../controllers/proficiencyController";
 import { ProficiencyService } from "../services/Profinciency/proficiencyService";
 import { IProficiencyService } from "../services/Profinciency/iProficiencyService";
@@ -12,3 +12,4 @@ proficiencyRouter.get("/", proficiencyController.getAllProficiencies);
 proficiencyRouter.get("/:index", proficiencyController.getProficiency);
 
 export default proficiencyRouter;
+*/
