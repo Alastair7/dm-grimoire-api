@@ -23,6 +23,8 @@ import { IFeatureService } from "./services/Feature/iFeatureService";
 import { FeatureService } from "./services/Feature/featureService";
 import { IMagicItemService } from "./services/Magic_Item/iMagicItemService";
 import { MagicItemService } from "./services/Magic_Item/magicItemService";
+import { IMonsterService } from "./services/Monster/iMonsterService";
+import { MonsterService } from "./services/Monster/monsterService";
 
 import "./controllers/abilityScoreController";
 import "./controllers/alignmentController";
@@ -34,6 +36,7 @@ import "./controllers/equipmentCategoriesController";
 import "./controllers/equipmentController";
 import "./controllers/featureController";
 import "./controllers/magicItemController";
+import "./controllers/monsterController";
 
 const container = new Container();
 
@@ -59,9 +62,8 @@ container
   .to(EquipmentCategoriesService);
 
 container.bind<IEquipmentService>(TYPES.IEquipmentService).to(EquipmentService);
-
 container.bind<IFeatureService>(TYPES.iFeatureService).to(FeatureService);
-
 container.bind<IMagicItemService>(TYPES.iMagicItemService).to(MagicItemService);
+container.bind<IMonsterService>(TYPES.iMonsterService).to(MonsterService);
 
 export default container;

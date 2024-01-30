@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { IMonsterService } from "../services/Monster/iMonsterService";
 import { MonsterService } from "../services/Monster/monsterService";
 import { MonsterController } from "../controllers/monsterController";
@@ -14,3 +14,4 @@ monsterRouter.get("/", monsterController.getMonsters);
 monsterRouter.get("/:index", monsterController.getMonster);
 
 export default monsterRouter;
+*/
