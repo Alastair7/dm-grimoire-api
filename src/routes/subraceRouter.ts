@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { ISubraceService } from "../services/SubRace/iSubraceService";
 import { SubraceService } from "../services/SubRace/subraceService";
 import { SubraceController } from "../controllers/subraceController";
@@ -14,3 +14,4 @@ subraceRouter.get("/", subraceController.getSubraces);
 subraceRouter.get("/:index", subraceController.getSubrace);
 
 export default subraceRouter;
+*/

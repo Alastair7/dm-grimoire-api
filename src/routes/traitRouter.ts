@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { ITraitService } from "../services/Trait/ITraitService";
 import { TraitService } from "../services/Trait/TraitService";
 import { TraitController } from "../controllers/traitController";
@@ -12,3 +12,4 @@ traitRouter.get("/", traitController.getTraits);
 traitRouter.get("/:index", traitController.getTrait);
 
 export default traitRouter;
+*/

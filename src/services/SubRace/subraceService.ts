@@ -1,47 +1,32 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { GetSubraceResponse } from "../../models/D&D/subraces/getSubraceResponseModel";
 import { GetSubracesResponse } from "../../models/D&D/subraces/getSubracesResponseModel";
 import { ISubraceService } from "./iSubraceService";
+import { IDndService } from "../../third-party/d&d/IDndService";
+import { inject, injectable } from "inversify";
+import TYPES from "../../utils/DI/types";
+import { ApiRequestTypes } from "../../common/enums/apiRequestTypes";
 
+@injectable()
 export class SubraceService implements ISubraceService {
+  private _dndService: IDndService;
+
+  constructor(@inject(TYPES.IDndService) dndService: IDndService) {
+    this._dndService = dndService;
+  }
+
   async getSubraces(): Promise<GetSubracesResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+    const response: GetSubracesResponse = await this._dndService.getAll(
+      ApiRequestTypes.SUB_RACE
+    );
 
-      const response: AxiosResponse<GetSubracesResponse> = await axios.get(
-        "https://www.dnd5eapi.co/api/subraces",
-        requestConfig
-      );
-
-      const subracesData: GetSubracesResponse = response.data;
-
-      return Promise.resolve(subracesData);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    return response;
   }
   async getSubrace(index: string): Promise<GetSubraceResponse> {
-    try {
-      const requestConfig: AxiosRequestConfig = {
-        headers: { Accept: "application/json" },
-        timeout: 30000,
-      };
+    const response: GetSubraceResponse = await this._dndService.get(
+      index,
+      ApiRequestTypes.SUB_RACE
+    );
 
-      const response: AxiosResponse<GetSubraceResponse> = await axios.get(
-        `https://www.dnd5eapi.co/api/subraces/${index}`,
-        requestConfig
-      );
-
-      const subracesData: GetSubraceResponse = response.data;
-
-      return Promise.resolve(subracesData);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    return response;
   }
 }

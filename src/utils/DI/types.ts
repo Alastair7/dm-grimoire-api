@@ -14,6 +14,9 @@ const TYPES = {
   iProficiencyService: Symbol("iProficiencyService"),
   iRaceService: Symbol("iRaceService"),
   iSkillService: Symbol("iSkillService"),
+  iSpellService: Symbol("iSpellService"),
+  iSubraceService: Symbol("iSubraceService"),
+  iTraitService: Symbol("iTraitService"),
 };
 
 export default TYPES;

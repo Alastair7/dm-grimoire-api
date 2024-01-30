@@ -31,6 +31,12 @@ import { IRaceService } from "./services/Race/iRaceService";
 import { RaceService } from "./services/Race/RaceService";
 import { ISkillService } from "./services/Skill/iSkillService";
 import { SkillService } from "./services/Skill/skillService";
+import { ISpellService } from "./services/Spell/iSpellService";
+import { SpellService } from "./services/Spell/spellService";
+import { ISubraceService } from "./services/SubRace/iSubraceService";
+import { SubraceService } from "./services/SubRace/subraceService";
+import { ITraitService } from "./services/Trait/ITraitService";
+import { TraitService } from "./services/Trait/TraitService";
 
 import "./controllers/abilityScoreController";
 import "./controllers/alignmentController";
@@ -46,6 +52,9 @@ import "./controllers/monsterController";
 import "./controllers/proficiencyController";
 import "./controllers/raceController";
 import "./controllers/skillController";
+import "./controllers/spellController";
+import "./controllers/subraceController";
+import "./controllers/traitController";
 
 const container = new Container();
 
@@ -81,4 +90,7 @@ container
 
 container.bind<IRaceService>(TYPES.iRaceService).to(RaceService);
 container.bind<ISkillService>(TYPES.iSkillService).to(SkillService);
+container.bind<ISpellService>(TYPES.iSpellService).to(SpellService);
+container.bind<ISubraceService>(TYPES.iSubraceService).to(SubraceService);
+container.bind<ITraitService>(TYPES.iTraitService).to(TraitService);
 export default container;
