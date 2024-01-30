@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { IMagicItemService } from "../services/Magic_Item/iMagicItemService";
 import { MagicItemService } from "../services/Magic_Item/magicItemService";
 import { MagicItemController } from "../controllers/magicItemController";
@@ -14,3 +14,4 @@ magicItemRouter.get("/", magicItemController.getMagicItems);
 magicItemRouter.get("/:index", magicItemController.getMagicItem);
 
 export default magicItemRouter;
+*/
