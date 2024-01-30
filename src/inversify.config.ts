@@ -29,6 +29,8 @@ import { IProficiencyService } from "./services/Profinciency/iProficiencyService
 import { ProficiencyService } from "./services/Profinciency/proficiencyService";
 import { IRaceService } from "./services/Race/iRaceService";
 import { RaceService } from "./services/Race/RaceService";
+import { ISkillService } from "./services/Skill/iSkillService";
+import { SkillService } from "./services/Skill/skillService";
 
 import "./controllers/abilityScoreController";
 import "./controllers/alignmentController";
@@ -43,6 +45,7 @@ import "./controllers/magicItemController";
 import "./controllers/monsterController";
 import "./controllers/proficiencyController";
 import "./controllers/raceController";
+import "./controllers/skillController";
 
 const container = new Container();
 
@@ -77,5 +80,5 @@ container
   .to(ProficiencyService);
 
 container.bind<IRaceService>(TYPES.iRaceService).to(RaceService);
-
+container.bind<ISkillService>(TYPES.iSkillService).to(SkillService);
 export default container;

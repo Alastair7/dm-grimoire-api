@@ -4,7 +4,7 @@ import userRouter from "./userRouter"; // Import user router
 import spellRouter from "./spellRouter";
 //import damageTypeRouter from "./damageTypeRouter";
 //import equipmentRouter from "./equipmentRouter";
-import skillRouter from "./skillRouter";
+//import skillRouter from "./skillRouter";
 //import magicItemRouter from "./magicItemRouter";
 //import alignmentRouter from "./alignmentRouter";
 //import monsterRouter from "./monsterRouter";
@@ -34,7 +34,7 @@ appRouter.use("/spells", spellRouter);
 //appRouter.use("/damage-types", damageTypeRouter);
 //appRouter.use("/equipment", equipmentRouter);
 //appRouter.use("/proficiencies", equipmentRouter);
-appRouter.use("/skills", skillRouter);
+//appRouter.use("/skills", skillRouter);
 //appRouter.use("/magic-items", magicItemRouter);
 //appRouter.use("/alignments", alignmentRouter);
 //appRouter.use("/monsters", monsterRouter);

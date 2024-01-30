@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { ISkillService } from "../services/Skill/iSkillService";
 import { SkillService } from "../services/Skill/skillService";
 import { SkillController } from "../controllers/skillController";
@@ -12,3 +12,4 @@ skillRouter.get("/", skillController.getSkills);
 skillRouter.get("/:index", skillController.getSkill);
 
 export default skillRouter;
+*/
