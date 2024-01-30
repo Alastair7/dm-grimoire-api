@@ -12,6 +12,7 @@ const TYPES = {
   iMagicItemService: Symbol("iMagicItemService"),
   iMonsterService: Symbol("iMonsterService"),
   iProficiencyService: Symbol("iProficiencyService"),
+  iRaceService: Symbol("iRaceService"),
 };
 
 export default TYPES;

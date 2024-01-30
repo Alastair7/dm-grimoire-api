@@ -27,6 +27,8 @@ import { IMonsterService } from "./services/Monster/iMonsterService";
 import { MonsterService } from "./services/Monster/monsterService";
 import { IProficiencyService } from "./services/Profinciency/iProficiencyService";
 import { ProficiencyService } from "./services/Profinciency/proficiencyService";
+import { IRaceService } from "./services/Race/iRaceService";
+import { RaceService } from "./services/Race/RaceService";
 
 import "./controllers/abilityScoreController";
 import "./controllers/alignmentController";
@@ -40,6 +42,7 @@ import "./controllers/featureController";
 import "./controllers/magicItemController";
 import "./controllers/monsterController";
 import "./controllers/proficiencyController";
+import "./controllers/raceController";
 
 const container = new Container();
 
@@ -72,5 +75,7 @@ container.bind<IMonsterService>(TYPES.iMonsterService).to(MonsterService);
 container
   .bind<IProficiencyService>(TYPES.iProficiencyService)
   .to(ProficiencyService);
+
+container.bind<IRaceService>(TYPES.iRaceService).to(RaceService);
 
 export default container;

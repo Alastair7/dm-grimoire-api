@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+/*import express, { Router } from "express";
 import { IRaceService } from "../services/Race/iRaceService";
 import { RaceService } from "../services/Race/RaceService";
 import { RaceController } from "../controllers/raceController";
@@ -12,3 +12,4 @@ raceRouter.get("/", raceController.getRaces);
 raceRouter.get("/:index", raceController.getRace);
 
 export default raceRouter;
+*/
