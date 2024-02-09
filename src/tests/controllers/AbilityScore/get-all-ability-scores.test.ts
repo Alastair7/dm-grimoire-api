@@ -9,34 +9,41 @@ jest.mock("../../../services/Ability_Score/abilityScoreService");
 jest.mock("../../../third-party/d&d/DndService");
 
 describe("AbilityScoreController", () => {
+  let abilityScoreService: AbilityScoreService;
+  let mockResponse: GetAllAbilityScoresResponse;
+  let mRequest: Partial<Request>;
+  let mResponse: Partial<Response>;
+  let controller: AbilityScoreController;
+
+  beforeEach(() => {
+    abilityScoreService = new AbilityScoreService(new DndService());
+
+    mRequest = {
+      body: {},
+    };
+    mResponse = {
+      json: jest.fn().mockReturnThis(),
+      status: jest.fn().mockReturnThis(),
+      send: jest.fn().mockReturnThis(),
+    };
+
+    controller = new AbilityScoreController(abilityScoreService);
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it("Check if AbilityScoreService is called", async () => {
-    const abilityScoreService = new AbilityScoreService(new DndService());
+  it("GetAllAbilityScores returns data", async () => {
     const mockResponse: GetAllAbilityScoresResponse = {
       count: 1,
-      results: [
-        /* Add your mock data here */
-      ],
-    };
-
-    const mRequest: Partial<Request> = {
-      body: {},
-    };
-    const mResponse: Partial<Response> = {
-      statusCode: 200,
-      json: jest.fn().mockReturnThis(),
-      status: jest.fn().mockReturnThis(),
-      send: jest.fn().mockReturnThis(),
+      results: [],
     };
 
     jest
       .spyOn(abilityScoreService, "getAllAbilityScores")
       .mockResolvedValue(mockResponse);
 
-    const controller = new AbilityScoreController(abilityScoreService);
     await controller.getAllAbilityScores(
       mRequest as Request,
       mResponse as Response
@@ -44,5 +51,20 @@ describe("AbilityScoreController", () => {
 
     expect(mResponse.json).toHaveBeenCalledWith(mockResponse);
     expect(mResponse.status).toHaveBeenCalledWith(200);
+  });
+
+  it("GetAllAbilityScores returns error", async () => {
+    const errorMessage = "Error internal server";
+    jest
+      .spyOn(abilityScoreService, "getAllAbilityScores")
+      .mockRejectedValue(new Error(errorMessage));
+
+    await controller.getAllAbilityScores(
+      mRequest as Request,
+      mResponse as Response
+    );
+
+    expect(mResponse.json).toHaveBeenCalledWith(new Error(errorMessage));
+    expect(mResponse.status).toHaveBeenCalledWith(400);
   });
 });
