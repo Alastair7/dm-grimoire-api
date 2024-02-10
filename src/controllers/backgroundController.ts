@@ -29,7 +29,7 @@ export class BackgroundController implements interfaces.Controller {
   ) {
     try {
       const response = await this._backgroundService.getAllBackgrounds();
-      res.status(200).send(response);
+      res.status(200).json(response);
     } catch (error) {
       res.status(400).json(error);
     }

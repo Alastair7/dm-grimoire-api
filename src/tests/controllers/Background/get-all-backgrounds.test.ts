@@ -1,50 +1,52 @@
 import "reflect-metadata";
-
+import { BackgroundService } from "../../../services/Background/backgroundService";
 import { Request, Response } from "express";
-import { AbilityScoreController } from "../../../controllers/abilityScoreController";
-import { GetAllAbilityScoresResponse } from "../../../models/D&D/ability_scores/getAllAbilityScoresResponseModel";
-import { AbilityScoreService } from "../../../services/Ability_Score/abilityScoreService";
+import { BackgroundController } from "../../../controllers/backgroundController";
 import { DndService } from "../../../third-party/d&d/DndService";
+import { GetAllBackgroundResponse } from "../../../models/D&D/backgrounds/getAllBackgroundsResponseModel";
 
-jest.mock("../../../services/Ability_Score/abilityScoreService");
+jest.mock("../../../services/Background/backgroundService");
 jest.mock("../../../third-party/d&d/DndService");
 
-describe("AbilityScoreController", () => {
-  let abilityScoreService: AbilityScoreService;
+describe("BackgroundController", () => {
+  let mBackgroundService: BackgroundService;
+
   let mRequest: Partial<Request>;
   let mResponse: Partial<Response>;
-  let controller: AbilityScoreController;
+
+  let controller: BackgroundController;
 
   beforeEach(() => {
-    abilityScoreService = new AbilityScoreService(new DndService());
+    mBackgroundService = new BackgroundService(new DndService());
 
     mRequest = {
       body: {},
     };
+
     mResponse = {
       json: jest.fn().mockReturnThis(),
       status: jest.fn().mockReturnThis(),
       send: jest.fn().mockReturnThis(),
     };
 
-    controller = new AbilityScoreController(abilityScoreService);
+    controller = new BackgroundController(mBackgroundService);
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it("GetAllAbilityScores returns data", async () => {
-    const mockResponse: GetAllAbilityScoresResponse = {
+  it("GetAllBackgrounds returns data", async () => {
+    const mockResponse: GetAllBackgroundResponse = {
       count: 1,
       results: [],
     };
 
     jest
-      .spyOn(abilityScoreService, "getAllAbilityScores")
+      .spyOn(mBackgroundService, "getAllBackgrounds")
       .mockResolvedValue(mockResponse);
 
-    await controller.getAllAbilityScores(
+    await controller.getAllBackgrounds(
       mRequest as Request,
       mResponse as Response
     );
@@ -53,13 +55,14 @@ describe("AbilityScoreController", () => {
     expect(mResponse.status).toHaveBeenCalledWith(200);
   });
 
-  it("GetAllAbilityScores returns error", async () => {
-    const errorMessage = "Error internal server";
+  it("GetAllBackgrounds returns error when exceptionn", async () => {
+    const errorMessage = "Error Internal Server";
+
     jest
-      .spyOn(abilityScoreService, "getAllAbilityScores")
+      .spyOn(mBackgroundService, "getAllBackgrounds")
       .mockRejectedValue(new Error(errorMessage));
 
-    await controller.getAllAbilityScores(
+    await controller.getAllBackgrounds(
       mRequest as Request,
       mResponse as Response
     );
