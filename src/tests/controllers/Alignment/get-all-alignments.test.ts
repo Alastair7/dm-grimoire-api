@@ -1,23 +1,22 @@
 import "reflect-metadata";
 
 import { Request, Response } from "express";
-import { AbilityScoreController } from "../../../controllers/abilityScoreController";
-import { GetAllAbilityScoresResponse } from "../../../models/D&D/ability_scores/getAllAbilityScoresResponseModel";
-import { AbilityScoreService } from "../../../services/Ability_Score/abilityScoreService";
+import { AlignmentService } from "../../../services/Alignment/alignmentService";
+import { AlignmentController } from "../../../controllers/alignmentController";
 import { DndService } from "../../../third-party/d&d/DndService";
+import { GetAllAlignmentsResponse } from "../../../models/D&D/alignments/getAllAlignmentsResponseModel";
 
-jest.mock("../../../services/Ability_Score/abilityScoreService");
+jest.mock("../../../services/Alignment/alignmentService");
 jest.mock("../../../third-party/d&d/DndService");
 
-describe("AbilityScoreController", () => {
-  let abilityScoreService: AbilityScoreService;
+describe("AlignmentController", () => {
+  let mAlignmentService: AlignmentService;
   let mRequest: Partial<Request>;
   let mResponse: Partial<Response>;
-  let controller: AbilityScoreController;
+  let controller: AlignmentController;
 
   beforeEach(() => {
-    abilityScoreService = new AbilityScoreService(new DndService());
-
+    mAlignmentService = new AlignmentService(new DndService());
     mRequest = {
       body: {},
     };
@@ -26,25 +25,24 @@ describe("AbilityScoreController", () => {
       status: jest.fn().mockReturnThis(),
       send: jest.fn().mockReturnThis(),
     };
-
-    controller = new AbilityScoreController(abilityScoreService);
+    controller = new AlignmentController(mAlignmentService);
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it("GetAllAbilityScores returns data", async () => {
-    const mockResponse: GetAllAbilityScoresResponse = {
+  it("GetAllAlignments should return data", async () => {
+    const mockResponse: GetAllAlignmentsResponse = {
       count: 1,
       results: [],
     };
 
     jest
-      .spyOn(abilityScoreService, "getAllAbilityScores")
+      .spyOn(mAlignmentService, "getAllAlignments")
       .mockResolvedValue(mockResponse);
 
-    await controller.getAllAbilityScores(
+    await controller.getAllAlignments(
       mRequest as Request,
       mResponse as Response
     );
@@ -53,13 +51,14 @@ describe("AbilityScoreController", () => {
     expect(mResponse.status).toHaveBeenCalledWith(200);
   });
 
-  it("GetAllAbilityScores returns error", async () => {
-    const errorMessage = "Error internal server";
+  it("GetAllAlignments should return error json", async () => {
+    const errorMessage = "Internal Error Server";
+
     jest
-      .spyOn(abilityScoreService, "getAllAbilityScores")
+      .spyOn(mAlignmentService, "getAllAlignments")
       .mockRejectedValue(new Error(errorMessage));
 
-    await controller.getAllAbilityScores(
+    await controller.getAllAlignments(
       mRequest as Request,
       mResponse as Response
     );
