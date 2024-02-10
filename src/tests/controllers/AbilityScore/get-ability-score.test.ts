@@ -1,63 +1,68 @@
 import { Request, Response } from "express";
 import { AbilityScoreController } from "../../../controllers/abilityScoreController";
-import { GetAllAbilityScoresResponse } from "../../../models/D&D/ability_scores/getAllAbilityScoresResponseModel";
 import { AbilityScoreService } from "../../../services/Ability_Score/abilityScoreService";
 import { DndService } from "../../../third-party/d&d/DndService";
+import { AbilityScore } from "../../../models/D&D/ability_scores/abilityScoreModel";
 
 jest.mock("../../../services/Ability_Score/abilityScoreService");
 jest.mock("../../../third-party/d&d/DndService");
 
-describe("AbilityScoreController", () => {
-  let abilityScoreService: AbilityScoreService;
+describe("AbilityController", () => {
+  let mAbilityScoreService: AbilityScoreService;
   let mRequest: Partial<Request>;
   let mResponse: Partial<Response>;
   let controller: AbilityScoreController;
 
   beforeEach(() => {
-    abilityScoreService = new AbilityScoreService(new DndService());
+    mAbilityScoreService = new AbilityScoreService(new DndService());
+    const index: string = "test";
 
     mRequest = {
-      body: {},
+      params: { index },
     };
+
     mResponse = {
       json: jest.fn().mockReturnThis(),
       status: jest.fn().mockReturnThis(),
       send: jest.fn().mockReturnThis(),
     };
 
-    controller = new AbilityScoreController(abilityScoreService);
+    controller = new AbilityScoreController(mAbilityScoreService);
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it("GetAllAbilityScores returns data", async () => {
-    const mockResponse: GetAllAbilityScoresResponse = {
-      count: 1,
-      results: [],
+  it("GetAbilityScore returns an AbilityScore model", async () => {
+    const index = mRequest.params?.index;
+    const mockResponse: AbilityScore = {
+      index: index,
+      name: "test",
     };
 
     jest
-      .spyOn(abilityScoreService, "getAllAbilityScores")
+      .spyOn(mAbilityScoreService, "getAbilityScore")
       .mockResolvedValue(mockResponse);
 
-    await controller.getAllAbilityScores(
+    await controller.getAbilityScore(
       mRequest as Request,
       mResponse as Response
     );
 
+    expect(index).toBe("test");
     expect(mResponse.json).toHaveBeenCalledWith(mockResponse);
     expect(mResponse.status).toHaveBeenCalledWith(200);
   });
 
-  it("GetAllAbilityScores returns error", async () => {
-    const errorMessage = "Error internal server";
+  it("GetAbilityScore returns an error when exception", async () => {
+    const errorMessage = "Error Internal Server";
+
     jest
-      .spyOn(abilityScoreService, "getAllAbilityScores")
+      .spyOn(mAbilityScoreService, "getAbilityScore")
       .mockRejectedValue(new Error(errorMessage));
 
-    await controller.getAllAbilityScores(
+    await controller.getAbilityScore(
       mRequest as Request,
       mResponse as Response
     );
