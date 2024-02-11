@@ -43,7 +43,7 @@ export class DamageTypeController implements interfaces.Controller {
       const response = await this.damageTypeService.getDamageType(index);
       res.status(200).json(response);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).json(error);
     }
   }
 }
